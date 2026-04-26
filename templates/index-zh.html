@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VoiceForge AI：免费在线文字转语音（基于神经网络TTS）</title>
+<meta name="description" content="使用VoiceForge体验自然的AI文字转语音。借助先进的神经网络引擎，将文字转换为逼真的音频。无需登录，浏览器优先的工作流，为创作者打造。支持10+语言的20+种语音。">
+<meta name="keywords" content="VoiceForge, AI文字转语音, 免费TTS, 神经网络TTS, 语音生成器, 语音合成, 在线TTS, 文字转音频, text to speech, 语音合成工具">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ttsvoice.top/">
+<meta property="og:title" content="VoiceForge AI - 免费在线文字转语音 | 神经网络TTS">
+<meta property="og:description" content="使用VoiceForge体验自然的AI文字转语音。将文字转换为逼真音频。20+种语音，无需登录。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ttsvoice.top/">
+<meta property="og:site_name" content="VoiceForge TTS">
+<meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+
+<!-- JSON-LD 结构化数据：软件应用 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VoiceForge by TTSVoice",
+  "operatingSystem": "Web Browser",
+  "applicationCategory": "MultimediaApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "使用神经网络TTS技术的高质量AI文字转语音工具。支持10+语言的20+种语音。",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "1250"
+  },
+  "featureList": "https://ttsvoice.top/#features"
+}
+</script>
+
+<!-- JSON-LD 结构化数据：常见问题页面 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "VoiceForge是免费使用的吗？",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "是的，ttsvoice.top提供完全免费的VoiceForge版本，提供20+种神经网络语音。无需注册，无需信用卡。"
+    }
+  },{
+    "@type": "Question",
+    "name": "VoiceForge支持哪些语言？",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "VoiceForge支持英语（美式/英式/澳式）、中文、日语、韩语、德语、法语、西班牙语、葡萄牙语、意大利语、印地语、阿拉伯语等。"
+    }
+  },{
+    "@type": "Question",
+    "name": "我可以将VoiceForge生成的音频用于商业用途吗？",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "是的，VoiceForge音频可用于个人、教育和大多数商业用途。大规模商业部署请查阅微软TTS服务条款。"
+    }
+  },{
+    "@type": "Question",
+    "name": "VoiceForge单次可以转换多少字符？",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "VoiceForge每次转换请求最多支持5,000个字符。批量转换可处理最大2MB的文件。"
+    }
+  }]
+}
+</script>
+
+<script>if (window.top !== window.self) { window.top.location = window.self.location; }</script>
+
+<!-- 预连接到关键来源 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- 异步加载Google Fonts，避免阻塞渲染 -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<script>
+/* 为不支持link preload的浏览器提供回退 */
+(function() {
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://fonts.googleapis.com/css2?family=Google+Sans+Text:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap';
+  link.media = 'print';
+  link.onload = function() { this.media = 'all'; };
+  document.head.appendChild(link);
+})();
+</script>
+
+<style>
+/* --- 重置与变量 --- */
+*,::before,::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--blue:#1a73e8;--blue-d:#1557b0;--blue-l:#e8f0fe;--blue-m:#4285f4;
+--green:#34a853;--red:#ea4335;--yellow:#fbbc04;--orange:#fa7b17;
+--surface:#fff;--bg:#f8f9fa;--border:#dadce0;
+--text:#202124;--text2:#5f6368;--text3:#80868b;
+--r:12px;--rl:16px;--rxl:20px;
+--sh:0 1px 3px rgba(60,64,67,.3),0 1px 3px rgba(60,64,67,.15);
+--sh2:0 2px 8px rgba(60,64,67,.2),0 4px 12px rgba(60,64,67,.12);
+--tr:.22s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans SC',sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+button{cursor:pointer;font-family:inherit}
+input,textarea,select{font-family:inherit}
+.hidden{display:none!important}
+
+/* --- 动画 --- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ripple{0%{transform:scale(0);opacity:.5}100%{transform:scale(4);opacity:0}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes waveBar{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1.2)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.anim-fade-up{animation:fadeUp .45s var(--tr) both}
+.anim-fade-up:nth-child(2){animation-delay:.07s}
+.anim-fade-up:nth-child(3){animation-delay:.14s}
+.anim-fade-up:nth-child(4){animation-delay:.21s}
+.anim-fade-in{animation:fadeIn .3s ease both}
+
+/* --- 导航栏 --- */
+.navbar{
+  position:sticky;top:0;z-index:300;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+  transition:box-shadow var(--tr);
+}
+.navbar.scrolled{box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.nav-inner{max-width:1160px;margin:auto;padding:0 20px;height:64px;display:flex;align-items:center;gap:6px}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Google Sans','Roboto',sans-serif;font-size:20px;font-weight:700;
+  color:var(--text);text-decoration:none;flex-shrink:0;
+  transition:opacity var(--tr);
+}
+.nav-logo:hover{opacity:.8;text-decoration:none}
+.nav-logo-icon{
+  width:34px;height:34px;background:var(--blue);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;transition:transform var(--tr);
+}
+.nav-logo:hover .nav-logo-icon{transform:rotate(-5deg) scale(1.05)}
+.nav-logo span{color:var(--blue)}
+.nav-spacer{flex:1}
+.nav-links{display:flex;align-items:center;gap:2px; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch}
+.nav-link{
+  padding:8px 13px;border-radius:12px;font-size:14px;
+  color:var(--text2);font-family:'Google Sans','Roboto',sans-serif;
+  transition:all var(--tr);white-space:nowrap;border:none;background:none;
+}
+.nav-link:hover{background:#f1f3f4;color:var(--text);text-decoration:none}
+.nav-link.active{color:var(--blue);background:var(--blue-l)}
+
+/* 语言切换按钮 */
+.lang-btn{
+  display:flex;align-items:center;gap:6px;
+  padding:7px 13px;border-radius:20px;border:1px solid var(--border);
+  background:#fff;font-size:13px;font-weight:500;color:var(--text);
+  cursor:pointer;transition:all var(--tr);
+  font-family:'Google Sans','Roboto',sans-serif;text-decoration:none;
+}
+.lang-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
+.lang-btn .globe{font-size:16px;transition:transform var(--tr)}
+.lang-btn:hover .globe{transform:rotate(15deg)}
+
+/* --- 英雄区域 --- */
+.hero{
+  background:linear-gradient(135deg,#1565c0 0%,#1a73e8 45%,#1976d2 100%);
+  padding:64px 20px 48px;text-align:center;color:#fff;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(255,255,255,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero h1{
+  font-family:'Google Sans','Roboto',sans-serif;font-size:clamp(28px,5vw,50px);
+  font-weight:700;letter-spacing:-.5px;margin-bottom:14px;
+  animation:fadeUp .55s ease both;
+}
+.hero h1 em{font-style:normal;color:#90caf9}
+.hero-sub{
+  font-size:clamp(15px,2vw,18px);opacity:.92;
+  max-width:580px;margin:0 auto 30px;line-height:1.65;
+  animation:fadeUp .55s .1s ease both;
+}
+.hero-badges{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .55s .2s ease both;
+}
+.badge{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;
+  transition:all var(--tr);cursor:default;
+}
+.badge:hover{background:rgba(255,255,255,.25)}
+
+/* --- 主布局 --- */
+.main{max-width:1160px;margin:0 auto;padding:28px 20px 56px}
+.content-col{display:flex;flex-direction:column;gap:20px}
+
+/* --- 卡片（Android风格圆角） --- */
+.card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--rl);padding:24px;
+  box-shadow:var(--sh);
+  transition:box-shadow var(--tr);
+}
+.card:hover{box-shadow:var(--sh2)}
+.card+.card{margin-top:0}
+.stitle{
+  font-family:'Google Sans','Roboto',sans-serif;font-size:15px;font-weight:500;
+  color:var(--text);margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.stitle svg{width:17px;height:17px;color:var(--blue);flex-shrink:0}
+
+/* --- 统计区域 --- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:14px;text-align:center;
+  transition:transform var(--tr),box-shadow var(--tr);
+}
+.stat:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.stat-n{font-family:'Google Sans','Roboto',sans-serif;font-size:26px;font-weight:700;color:var(--blue)}
+.stat-l{font-size:12px;color:var(--text2);margin-top:2px}
+
+/* --- 标签页 --- */
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:22px;overflow-x:auto;gap:0}
+.tab-btn{
+  padding:11px 16px;font-family:'Google Sans','Roboto',sans-serif;font-size:14px;font-weight:500;
+  color:var(--text2);background:none;border:none;border-bottom:3px solid transparent;
+  cursor:pointer;white-space:nowrap;transition:all var(--tr);flex-shrink:0;
+  position:relative;
+}
+.tab-btn::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
+  background:var(--blue);border-radius:2px 2px 0 0;
+  transform:scaleX(0);transition:transform var(--tr);
+}
+.tab-btn:hover{color:var(--blue);background:#f8f9fa}
+.tab-btn.active{color:var(--blue)}
+.tab-btn.active::after{transform:scaleX(1)}
+.tab-pane{display:none;animation:fadeIn .25s ease both}
+.tab-pane.active{display:block}
+
+/* --- 文本输入区 --- */
+.ta-wrap{position:relative}
+.ta-wrap textarea{
+  width:100%;min-height:170px;padding:14px;
+  border:2px solid var(--border);border-radius:var(--r);
+  font-size:15px;resize:vertical;outline:none;line-height:1.65;
+  font-family:inherit;
+  background:#fff;color:var(--text);
+  transition:border-color var(--tr),box-shadow var(--tr);
+}
+.ta-wrap textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(26,115,232,.12);
+}
+.char-count{position:absolute;bottom:10px;right:12px;font-size:12px;color:var(--text3);pointer-events:none}
+.char-warn{color:var(--red)!important}
+.ta-toolbar{display:flex;gap:7px;margin-top:8px;flex-wrap:wrap}
+
+/* --- 翻译区域 --- */
+.translate-box{
+  background:linear-gradient(135deg,#f0f4ff,#f8f9fa);
+  border:1px solid #c2d2f3;border-radius:var(--r);
+  padding:14px;margin-top:12px;
+  transition:all var(--tr);
+  animation:fadeUp .3s ease both;
+}
+.translate-box.hidden{display:none}
+.translate-header{display:flex;align-items:center;gap:8px;margin-bottom:10px; flex-wrap:wrap}
+.translate-badge{
+  background:var(--blue);color:#fff;font-size:11px;font-weight:500;
+  padding:3px 9px;border-radius:12px;font-family:'Google Sans','Roboto',sans-serif;
+}
+.translate-label{font-size:13px;color:var(--text2);flex:1; min-width:150px}
+.translate-actions{display:flex;gap:6px; flex-wrap:wrap}
+.translate-box textarea{
+  width:100%;min-height:80px;padding:10px 12px;
+  border:1px solid var(--border);border-radius:var(--r);
+  font-size:14px;resize:vertical;outline:none;background:#fff;
+  transition:border-color var(--tr);
+}
+.translate-box textarea:focus{border-color:var(--blue)}
+.trans-status{font-size:12px;color:var(--text3);margin-top:6px;display:flex;align-items:center;gap:5px; flex-wrap:wrap}
+
+/* --- 语音选择网格 --- */
+.vfilters{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap; overflow-x:auto; padding-bottom:4px}
+.vf{
+  padding:5px 12px;font-size:12px;font-weight:500;
+  border:1px solid var(--border);border-radius:16px;
+  background:#fff;color:var(--text2);cursor:pointer;
+  transition:all var(--tr); white-space:nowrap
+}
+.vf:hover{border-color:var(--blue);color:var(--blue)}
+.vf.on{background:var(--blue-l);color:var(--blue);border-color:#aecbfa}
+
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.vc{
+  border:2px solid var(--border);border-radius:16px;
+  padding:12px 10px;cursor:pointer;transition:all var(--tr);
+  background:#fff;position:relative;overflow:hidden;
+}
+.vc::after{content:'';position:absolute;inset:0;background:rgba(26,115,232,.04);opacity:0;transition:opacity var(--tr)}
+.vc:hover{border-color:#aecbfa;transform:translateY(-2px);box-shadow:0 4px 12px rgba(26,115,232,.12)}
+.vc:hover::after{opacity:1}
+.vc.sel{border-color:var(--blue);background:var(--blue-l);transform:translateY(-2px);box-shadow:0 4px 12px rgba(26,115,232,.2)}
+.vc-flag{font-size:20px;margin-bottom:5px;display:block}
+.vc-name{font-family:'Google Sans','Roboto',sans-serif;font-size:13px;font-weight:500;color:var(--text)}
+.vc-lang{font-size:11px;color:var(--text2);margin-top:2px}
+.vc-style{font-size:11px;color:var(--text3);margin-top:2px}
+.vc-check{
+  position:absolute;top:7px;right:7px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--blue);display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:scale(0);transition:all var(--tr);
+}
+.vc.sel .vc-check{opacity:1;transform:scale(1)}
+
+/* --- 控制区域 --- */
+.ctrl-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:14px}
+@media(max-width:640px){.ctrl-grid{grid-template-columns:1fr}}
+.ctrl label{display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:7px}
+.sl-row{display:flex;align-items:center;gap:8px}
+.sl-row input[type=range]{
+  flex:1;accent-color:var(--blue);height:4px;cursor:pointer;
+  -webkit-appearance:none;background:linear-gradient(to right,var(--blue) var(--pct,50%),var(--border) var(--pct,50%));
+  border-radius:2px;outline:none;
+}
+.sl-row input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--blue);box-shadow:0 1px 4px rgba(26,115,232,.4);
+  transition:transform var(--tr),box-shadow var(--tr);cursor:pointer;
+}
+.sl-row input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2);box-shadow:0 2px 8px rgba(26,115,232,.5)}
+.sl-val{font-size:13px;font-weight:500;color:var(--blue);min-width:42px;text-align:right}
+select{
+  width:100%;padding:9px 10px;border:1px solid var(--border);
+  border-radius:var(--r);font-size:13px;background:#fff;outline:none;
+  transition:border-color var(--tr),box-shadow var(--tr);appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6368' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;
+}
+select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,232,.12)}
+
+/* --- 按钮（Android风格圆角） --- */
+.btn-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 22px;border-radius:12px;font-size:14px;font-weight:500;
+  border:none;font-family:'Google Sans','Roboto',sans-serif;white-space:nowrap;
+  transition:all var(--tr);position:relative;overflow:hidden;cursor:pointer;
+}
+.btn::before{
+  content:'';position:absolute;top:50%;left:50%;
+  width:0;height:0;border-radius:50%;
+  background:rgba(255,255,255,.3);transform:translate(-50%,-50%);
+  transition:width .4s ease,height .4s ease,opacity .4s ease;
+}
+.btn:active::before{width:200px;height:200px;opacity:0}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 1px 3px rgba(26,115,232,.3)}
+.btn-primary:not(:disabled):hover{background:var(--blue-d);box-shadow:0 3px 8px rgba(26,115,232,.4);transform:translateY(-1px)}
+.btn-primary:not(:disabled):active{transform:scale(.98)}
+.btn-outline{background:#fff;color:var(--blue);border:1px solid var(--blue)}
+.btn-outline:not(:disabled):hover{background:var(--blue-l);transform:translateY(-1px)}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--text2)}
+.btn-ghost:not(:disabled):hover{background:#f1f3f4;color:var(--text);border-color:var(--text3)}
+.btn-sm{padding:6px 13px;font-size:12px}
+.btn-xs{padding:4px 10px;font-size:11px;border-radius:8px}
+
+/* --- 播放器 --- */
+.player-wrap{
+  margin-top:18px;background:linear-gradient(135deg,#f8f9fa,#f0f4ff);
+  border:1px solid #c2d2f3;border-radius:16px;padding:18px;
+  display:none;animation:fadeUp .3s ease both;
+}
+.player-wrap.show{display:block}
+.player-top{display:flex;align-items:center;gap:12px;margin-bottom:12px; flex-wrap:wrap}
+.player-av{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--blue-m));
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(26,115,232,.3);
+}
+.player-meta strong{font-size:14px;font-weight:500;display:block}
+.player-meta span{font-size:12px;color:var(--text2)}
+
+.wave-bars{display:flex;align-items:center;gap:3px;height:24px;margin-left:auto}
+.wave-bar{
+  width:4px;border-radius:2px;background:var(--blue);
+  animation:waveBar .8s ease-in-out infinite;
+  transform-origin:bottom;
+}
+.wave-bar:nth-child(1){animation-delay:0s;height:12px}
+.wave-bar:nth-child(2){animation-delay:.1s;height:20px}
+.wave-bar:nth-child(3){animation-delay:.2s;height:16px}
+.wave-bar:nth-child(4){animation-delay:.3s;height:24px}
+.wave-bar:nth-child(5){animation-delay:.4s;height:14px}
+.wave-bar:nth-child(6){animation-delay:.15s;height:18px}
+.wave-bars.paused .wave-bar{animation-play-state:paused}
+
+audio{width:100%;outline:none;border-radius:6px}
+audio::-webkit-media-controls-panel{background:#fff}
+
+/* --- 加载动画 --- */
+.spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite}
+.spinner-blue{border-color:rgba(26,115,232,.2);border-top-color:var(--blue)}
+
+/* --- 历史记录 --- */
+.hist-item{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px;border:1px solid var(--border);border-radius:12px;
+  margin-bottom:8px;background:#fff;cursor:default;
+  transition:all var(--tr);animation:fadeUp .25s ease both; flex-wrap:wrap
+}
+.hist-item:hover{border-color:#aecbfa;transform:translateX(2px)}
+.hist-text{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; min-width:0}
+.hist-meta{font-size:11px;color:var(--text3)}
+.hist-badge{background:var(--blue-l);color:var(--blue);padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;white-space:nowrap;flex-shrink:0}
+.hist-play{
+  padding:5px 9px;border:1px solid var(--border);border-radius:8px;
+  font-size:11px;background:#fff;color:var(--text2);cursor:pointer;
+  transition:all var(--tr);flex-shrink:0;
+}
+.hist-play:hover{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
+
+/* --- 批量转换 --- */
+.drop-zone{
+  border:2px dashed var(--border);border-radius:16px;
+  padding:40px 20px;text-align:center;cursor:pointer;
+  transition:all var(--tr);background:#fff;
+}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--blue);background:var(--blue-l)}
+.drop-zone .drop-icon{font-size:40px;margin-bottom:10px;transition:transform var(--tr)}
+.drop-zone:hover .drop-icon{transform:scale(1.1) rotate(-5deg)}
+
+/* --- SSML编辑器 --- */
+.ssml-toolbar{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.ssml-btn{
+  padding:5px 11px;font-size:12px;border:1px solid var(--border);
+  border-radius:12px;background:#fff;cursor:pointer;transition:all var(--tr);
+  color:var(--text2);font-family:'Google Sans','Roboto',sans-serif;
+}
+.ssml-btn:hover{background:var(--blue-l);border-color:var(--blue);color:var(--blue)}
+.ssml-hint{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.6}
+
+/* --- 常见问题 --- */
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden;transition:box-shadow var(--tr)}
+.faq-item:hover{box-shadow:var(--sh)}
+.faq-q{
+  width:100%;padding:14px 18px;text-align:left;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:14px;font-weight:500;background:#fff;border:none;cursor:pointer;
+  transition:background var(--tr);
+}
+.faq-q:hover{background:#f8f9fa}
+.faq-arr{font-size:11px;transition:transform var(--tr);flex-shrink:0;margin-left:12px}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-a{
+  padding:0 18px;font-size:14px;color:var(--text2);line-height:1.75;
+  max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+}
+.faq-item.open .faq-a{max-height:200px;padding:0 18px 14px}
+
+/* --- 步骤区域 --- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:600px){.steps{grid-template-columns:1fr 1fr}}
+.step{text-align:center;padding:16px 10px;transition:transform var(--tr)}
+.step:hover{transform:translateY(-3px)}
+.step-num{
+  width:36px;height:36px;background:var(--blue);color:#fff;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Google Sans','Roboto',sans-serif;font-weight:700;font-size:15px;
+  margin:0 auto 10px;box-shadow:0 2px 8px rgba(26,115,232,.3);
+  transition:transform var(--tr);
+}
+.step:hover .step-num{transform:scale(1.1) rotate(-5deg)}
+.step h3{font-family:'Google Sans','Roboto',sans-serif;font-size:13px;font-weight:500;margin-bottom:5px}
+.step p{font-size:12px;color:var(--text2);line-height:1.55}
+
+/* --- 功能特色 --- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:640px){.features{grid-template-columns:1fr}}
+.feat{
+  padding:18px;border:1px solid var(--border);border-radius:16px;background:#fff;
+  transition:all var(--tr);
+}
+.feat:hover{transform:translateY(-3px);box-shadow:var(--sh2);border-color:#aecbfa}
+.feat-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+.fi-b{background:#e8f0fe}.fi-g{background:#e6f4ea}.fi-y{background:#fef7e0}.fi-r{background:#fce8e6}.fi-p{background:#f3e8fd}.fi-t{background:#e0f4f1}
+.feat h3{font-family:'Google Sans','Roboto',sans-serif;font-size:14px;font-weight:500;margin-bottom:5px}
+.feat p{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* --- 提示消息 --- */
+.toast{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(70px);
+  background:#323232;color:#fff;padding:11px 20px;
+  border-radius:12px;font-size:14px;z-index:9999;
+  opacity:0;pointer-events:none;transition:all .28s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 3px 12px rgba(0,0,0,.35);white-space:nowrap; max-width:90vw; overflow:hidden; text-overflow:ellipsis
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.success{background:#137333}
+.toast.error{background:#c5221f}
+
+/* --- 页面内容 --- */
+.page-content{max-width:800px;margin:0 auto;padding:44px 24px;animation:fadeIn .3s ease both}
+.page-content h1{font-family:'Google Sans','Roboto',sans-serif;font-size:32px;font-weight:700;margin-bottom:6px}
+.page-content .page-h1{
+  font-family:'Google Sans','Roboto',sans-serif;font-size:32px;font-weight:700;margin-bottom:6px;
+}
+.pg-sub{color:var(--text2);margin-bottom:28px;font-size:15px}
+.page-content h2{font-family:'Google Sans','Roboto',sans-serif;font-size:20px;font-weight:500;margin:26px 0 10px;color:var(--text)}
+.page-content p,.page-content li{font-size:15px;color:#3c4043;line-height:1.85}
+.page-content ul{padding-left:22px;margin:8px 0 16px}
+.page-content ul li{margin-bottom:5px}
+.divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+code{font-family:'Roboto Mono',monospace;background:#f1f3f4;padding:1px 6px;border-radius:6px;font-size:13px}
+
+/* --- 侧边栏卡片 --- */
+.extra-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px; margin-top:0}
+.sidebar-card{border-radius:16px; padding:20px}
+.quick-tip-item{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2);transition:color var(--tr)}
+.quick-tip-item:last-child{border:none}
+.quick-tip-item:hover{color:var(--text)}
+.quick-tip-item .tip-icon{color:var(--blue);font-size:14px;flex-shrink:0;margin-top:1px}
+
+/* --- 网站地图页面 --- */
+.sitemap-card{border:1px solid var(--border);border-radius:var(--rl);padding:18px;background:#fff;transition:box-shadow var(--tr)}
+.sitemap-card:hover{box-shadow:var(--sh2)}
+.sitemap-card h3{font-family:'Google Sans','Roboto',sans-serif;font-size:16px;font-weight:500;margin-bottom:12px;color:var(--blue)}
+.sitemap-card ul{list-style:none;padding:0}
+.sitemap-card ul li{margin-bottom:8px}
+.sitemap-card ul li a{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text);padding:6px 0;transition:color var(--tr)}
+.sitemap-card ul li a:hover{color:var(--blue);text-decoration:none}
+.sitemap-card ul li a svg{width:14px;height:14px;color:var(--blue);flex-shrink:0}
+
+/* --- 页脚 --- */
+footer{background:#fff;border-top:1px solid var(--border);padding:28px 20px;margin-top:48px}
+.footer-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-brand{font-family:'Google Sans','Roboto',sans-serif;font-weight:700;font-size:16px}
+.footer-copy{font-size:12px;color:var(--text3);margin-top:3px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text2);transition:color var(--tr)}
+.footer-links a:hover{color:var(--blue);text-decoration:none}
+.trust-section{max-width:1160px;margin:16px auto 0;padding:0 20px;text-align:center;font-size:12px;color:var(--text3);line-height:1.8}
+.trust-section a{color:var(--text2);margin:0 8px}
+.trust-section a:hover{color:var(--blue)}
+
+/* --- 响应式 --- */
+@media(max-width:900px){ .nav-inner{padding:0 12px} .nav-link{padding:6px 10px;font-size:13px} }
+@media(max-width:768px){
+  .hero{padding:48px 16px 40px} .hero h1{font-size:clamp(24px,6vw,36px)} .hero-sub{font-size:15px}
+  .main{padding:20px 12px 40px} .card{padding:18px}
+  .tabs{overflow-x:auto; -webkit-overflow-scrolling:touch} .tab-btn{padding:10px 12px;font-size:13px}
+  .ctrl-grid{grid-template-columns:1fr; gap:12px} .vgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .player-wrap{padding:14px}
+}
+@media(max-width:600px){
+  .stats{grid-template-columns:repeat(2,1fr)} .steps{grid-template-columns:1fr 1fr} .features{grid-template-columns:1fr}
+  .nav-links{gap:0} .nav-link{padding:6px 8px}
+  .lang-btn{padding:5px 10px;font-size:12px}
+  .drop-zone{padding:28px 12px} .extra-cards{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .nav-inner{height:56px} .nav-logo{font-size:17px; gap:6px} .nav-logo-icon{width:28px;height:28px;font-size:14px}
+  .nav-link{padding:5px 6px;font-size:12px} .card{padding:14px}
+  .hero{padding:36px 12px 32px} .hero h1{font-size:22px} .hero-sub{font-size:14px}
+  .badge{padding:4px 10px;font-size:11px} .stat-n{font-size:22px}
+  .btn{padding:8px 16px;font-size:13px} .ctrl-grid{gap:10px}
+  .vgrid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+  .vc{padding:10px 8px} .vc-name{font-size:12px} .vc-lang,.vc-style{font-size:10px}
+  .faq-q{font-size:13px;padding:12px 14px}
+  .page-content h1{font-size:24px} .page-content .page-h1{font-size:24px} .page-content h2{font-size:18px}
+  .page-content p,.page-content li{font-size:14px}
+}
+@media(max-width:400px){ .nav-link{font-size:11px;padding:5px 4px} .hero h1{font-size:20px} .btn{font-size:12px} .tab-btn{font-size:12px;padding:8px 10px} .drop-zone .drop-icon{font-size:28px} }
+
+/* --- 加载骨架屏 --- */
+.skeleton{
+  background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);
+  background-size:200% 100%;animation:shimmer 1.5s infinite;
+  border-radius:6px;
+}
+
+/* --- 发音修正面板 --- */
+.phonetic-panel{
+  background:#fffde7;border:1px solid #f9a825;border-radius:12px;
+  padding:14px;margin-top:12px;display:none;animation:slideDown .2s ease both;
+}
+.phonetic-panel.show{display:block}
+.ph-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.ph-input{flex:1;min-width:120px;padding:7px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px}
+.ph-arrow{color:var(--text3);font-size:12px}
+
+/* --- 语速预设 --- */
+.presets{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.preset-btn{
+  padding:4px 11px;font-size:12px;border:1px solid var(--border);
+  border-radius:14px;background:#fff;cursor:pointer;color:var(--text2);
+  transition:all var(--tr);font-family:'Google Sans','Roboto',sans-serif;
+}
+.preset-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-l)}
+.preset-btn.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+@keyframes voicePulse{
+  0%{box-shadow:0 0 0 0 rgba(26,115,232,.4)}
+  70%{box-shadow:0 0 0 8px rgba(26,115,232,0)}
+  100%{box-shadow:0 0 0 0 rgba(26,115,232,0)}
+}
+.vc.previewing{animation:voicePulse .6s ease 2}
+
+.eq-icon{display:inline-flex;align-items:flex-end;gap:1.5px;height:14px;margin-left:4px}
+.eq-icon span{width:3px;background:var(--blue);border-radius:1px;animation:waveBar .5s ease infinite}
+.eq-icon span:nth-child(2){animation-delay:.1s}
+.eq-icon span:nth-child(3){animation-delay:.2s}
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+  <a href="/" class="nav-logo" onclick="showPage('home');return false" aria-label="VoiceForge首页">
+    <div class="nav-logo-icon" aria-hidden="true">🎙️</div>
+    Voice<span>Forge</span>
+  </a>
+  <div class="nav-spacer"></div>
+  <div class="nav-links">
+    <button class="nav-link active" id="nl-home" onclick="showPage('home')">首页</button>
+    <button class="nav-link" id="nl-about" onclick="showPage('about')">关于</button>
+    <button class="nav-link" id="nl-privacy" onclick="showPage('privacy')">隐私</button>
+    <button class="nav-link" id="nl-help" onclick="showPage('help')">帮助</button>
+    <button class="nav-link" id="nl-sitemap" onclick="showPage('sitemap')">网站地图</button>
+  </div>
+  <div class="lang-wrap">
+    <a href="/" class="lang-btn" aria-label="切换到英文版">
+      <span class="globe">🌐</span> English
+    </a>
+  </div>
+</div>
+</nav>
+
+<!-- 提示消息 -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- 首页 -->
+<div id="page-home">
+<header class="hero">
+  <h1>VoiceForge AI：免费文字转语音<em>只需几秒</em></h1>
+  <p class="hero-sub">在线将文字转换为自然的AI语音。10+语言的20+种神经网络语音。自动翻译、语速音调控制、SSML编辑器。无需注册，对创作者完全免费。</p>
+  <div class="hero-badges">
+    <span class="badge">✓ 20+ 神经网络语音</span>
+    <span class="badge">✓ 10+ 语言</span>
+    <span class="badge">✓ 永久免费</span>
+    <span class="badge">✓ 自动翻译</span>
+  </div>
+</header>
+
+<main class="main">
+<div class="stats">
+  <div class="stat anim-fade-up"><div class="stat-n" id="stat-gen">0</div><div class="stat-l">今日生成次数</div></div>
+  <div class="stat anim-fade-up"><div class="stat-n">20+</div><div class="stat-l">神经网络语音</div></div>
+  <div class="stat anim-fade-up"><div class="stat-n">10+</div><div class="stat-l">支持语言</div></div>
+  <div class="stat anim-fade-up"><div class="stat-n">5K</div><div class="stat-l">最大字符数</div></div>
+</div>
+
+<div class="content-col">
+  <!-- 主卡片 -->
+  <div class="card" id="converter">
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" onclick="goTab('convert')" role="tab" aria-selected="true">文字转语音</button>
+      <button class="tab-btn" onclick="goTab('batch')" role="tab" aria-selected="false">批量转换</button>
+      <button class="tab-btn" onclick="goTab('ssml')" role="tab" aria-selected="false">SSML编辑器</button>
+      <button class="tab-btn" onclick="goTab('history')" role="tab" aria-selected="false">历史记录</button>
+      <button class="tab-btn" onclick="goTab('guide')" role="tab" aria-selected="false">指南与常见问题</button>
+    </div>
+
+    <!-- 标签页：文字转语音 -->
+    <div class="tab-pane active" id="tab-convert" role="tabpanel">
+      <h2 class="stitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span>输入您要转换的文字</span>
+      </h2>
+      <div class="ta-wrap">
+        <textarea id="tts-text" placeholder="在此输入或粘贴文字——最多支持5,000个字符。" oninput="onInput()" aria-label="VoiceForge文字转语音输入框"></textarea>
+        <span class="char-count" id="char-count" aria-live="polite">0 / 5000</span>
+      </div>
+      <div class="ta-toolbar">
+        <button class="btn btn-ghost btn-sm" onclick="sampleText()">试试示例</button>
+        <button class="btn btn-ghost btn-sm" onclick="clearText()">清空</button>
+        <button class="btn btn-ghost btn-sm" onclick="pasteText()">粘贴</button>
+        <button class="btn btn-ghost btn-sm" onclick="countWords()">字数统计</button>
+        <button class="btn btn-ghost btn-sm" onclick="openPhonetic()">发音修正</button>
+      </div>
+
+      <!-- 发音修正面板 -->
+      <div class="phonetic-panel" id="phonetic-panel">
+        <h3 class="stitle" style="font-size:13px;margin-bottom:10px">🔧 发音助手 - 在生成前替换词语</h3>
+        <div class="ph-row">
+          <input class="ph-input" id="ph-from" placeholder="要替换的词语" aria-label="要替换的词语">
+          <span class="ph-arrow">→</span>
+          <input class="ph-input" id="ph-to" placeholder="音标/替换词" aria-label="音标替换词">
+          <button class="btn btn-outline btn-sm" onclick="applyPhonetic()">应用</button>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('phonetic-panel').classList.remove('show')">✕</button>
+        </div>
+        <p style="font-size:12px;color:var(--text2);margin:0">用于修正人名、缩写或专业术语的发音错误。</p>
+      </div>
+
+      <!-- 翻译区域 -->
+      <div class="translate-box hidden" id="translate-box">
+        <div class="translate-header">
+          <span class="translate-badge">🌐 已自动翻译</span>
+          <span class="translate-label" id="translate-label">文字已翻译为所选语音对应的语言</span>
+          <div class="translate-actions">
+            <button class="btn btn-ghost btn-xs" onclick="useOriginal()">使用原文</button>
+            <button class="btn btn-ghost btn-xs" onclick="retranslate()">↻ 重新翻译</button>
+          </div>
+        </div>
+        <textarea id="translate-ta" rows="4" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:10px;font-size:14px;resize:vertical;outline:none" placeholder="翻译结果将显示在此——您可以在生成前编辑。" aria-label="VoiceForge翻译后文字"></textarea>
+        <div class="trans-status" id="trans-status">
+          <span>✏️ 您可编辑上方翻译，然后点击生成语音</span>
+        </div>
+      </div>
+
+      <!-- 语音选择 -->
+      <h2 class="stitle" style="margin-top:22px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        <span>选择VoiceForge语音</span>
+      </h2>
+      <div class="vfilters" id="vfilters"></div>
+      <div class="vgrid" id="vgrid" role="radiogroup" aria-label="语音选择"></div>
+
+      <!-- 控制区域 -->
+      <div class="ctrl-grid">
+        <div class="ctrl">
+          <label for="speed">语速</label>
+          <div class="sl-row">
+            <input type="range" id="speed" min="0.5" max="2.0" step="0.1" value="1.0" oninput="onSpeed(this)" aria-label="语速控制">
+            <span class="sl-val" id="speed-val" aria-live="polite">1.0x</span>
+          </div>
+          <div class="presets" id="speed-presets">
+            <button class="preset-btn" onclick="setSpeed(.75)">慢速</button>
+            <button class="preset-btn on" onclick="setSpeed(1.0)">正常</button>
+            <button class="preset-btn" onclick="setSpeed(1.25)">快速</button>
+            <button class="preset-btn" onclick="setSpeed(1.5)">更快</button>
+          </div>
+        </div>
+        <div class="ctrl">
+          <label for="pitch">音调 (Hz)</label>
+          <div class="sl-row">
+            <input type="range" id="pitch" min="-50" max="50" step="5" value="0" oninput="onPitch(this)" aria-label="音调控制">
+            <span class="sl-val" id="pitch-val" aria-live="polite">0 Hz</span>
+          </div>
+        </div>
+        <div class="ctrl">
+          <label for="fmt">输出格式</label>
+          <select id="fmt" aria-label="音频输出格式">
+            <option value="mp3">MP3 - 推荐</option>
+            <option value="wav">WAV - 无损</option>
+            <option value="ogg">OGG - 压缩</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" id="gen-btn" onclick="generate()" aria-label="生成语音按钮">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21"/></svg>
+          <span>生成语音</span>
+        </button>
+        <button class="btn btn-outline" id="dl-btn" onclick="dlAudio()" disabled aria-label="下载音频">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>下载</span>
+        </button>
+        <button class="btn btn-ghost" id="share-btn" onclick="shareIt()" disabled aria-label="分享音频">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          <span>分享</span>
+        </button>
+      </div>
+
+      <!-- 播放器 -->
+      <div class="player-wrap" id="player-wrap">
+        <div class="player-top">
+          <div class="player-av" id="p-av" aria-hidden="true">🎙️</div>
+          <div class="player-meta">
+            <strong id="p-name">-</strong>
+            <span id="p-info">-</span>
+          </div>
+          <div class="wave-bars" id="wave-bars" aria-hidden="true">
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+            <div class="wave-bar"></div><div class="wave-bar"></div>
+          </div>
+        </div>
+        <audio id="audio" controls preload="auto"
+               onplay="document.getElementById('wave-bars').classList.remove('paused')"
+               onpause="document.getElementById('wave-bars').classList.add('paused')"
+               onended="document.getElementById('wave-bars').classList.add('paused')"
+               aria-label="VoiceForge音频播放器"></audio>
+      </div>
+    </div><!-- /convert -->
+
+    <!-- 标签页：批量转换 -->
+    <div class="tab-pane" id="tab-batch" role="tabpanel">
+      <h2 class="stitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>批量文字转换</span>
+      </h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:16px">上传.txt文件或输入多行文字。每行将生成一个独立的音频文件。</p>
+      <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-in').click()"
+           ondragover="dzOver(event)" ondragleave="dzLeave()" ondrop="dzDrop(event)">
+        <div class="drop-icon">📄</div>
+        <strong style="display:block;margin-bottom:5px;font-size:15px">将.txt文件拖放到此处</strong>
+        <p style="font-size:13px;color:var(--text2)">或点击浏览文件</p>
+        <input type="file" id="file-in" accept=".txt" style="display:none" onchange="loadFile(event)" aria-label="上传文本文件进行批量转换">
+      </div>
+      <div style="margin-top:14px">
+        <p style="font-size:13px;color:var(--text2);margin-bottom:7px">或手动输入行（每行一条）：</p>
+        <textarea id="batch-ta" style="width:100%;min-height:120px;border:1px solid var(--border);border-radius:12px;padding:12px;font-size:14px;resize:vertical;outline:none" placeholder="你好，欢迎！&#10;这是第二行。&#10;这是第三行。" aria-label="VoiceForge批量文字输入"></textarea>
+      </div>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn btn-primary" onclick="runBatch()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21"/></svg>
+          <span>转换所有行</span>
+        </button>
+        <button class="btn btn-ghost" onclick="document.getElementById('batch-ta').value='';document.getElementById('batch-out').innerHTML=''">清空</button>
+      </div>
+      <div id="batch-out" style="margin-top:14px"></div>
+    </div>
+
+    <!-- 标签页：SSML编辑器 -->
+    <div class="tab-pane" id="tab-ssml" role="tabpanel">
+      <h2 class="stitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span>SSML编辑器 - 高级语音控制</span>
+      </h2>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:14px">使用语音合成标记语言（SSML）标签，精细控制停顿、强调和发音。</p>
+      <div class="ssml-toolbar">
+        <button class="ssml-btn" onclick="insertSSML('break','<break time=&quot;500ms&quot;/>')">停顿</button>
+        <button class="ssml-btn" onclick="insertSSML('emphasis','<emphasis level=&quot;strong&quot;>文字</emphasis>')">强调</button>
+        <button class="ssml-btn" onclick="insertSSML('prosody','<prosody rate=&quot;slow&quot; pitch=&quot;high&quot;>文字</prosody>')">韵律</button>
+        <button class="ssml-btn" onclick="insertSSML('say-as','<say-as interpret-as=&quot;characters&quot;>文字</say-as>')">朗读方式</button>
+        <button class="ssml-btn" onclick="insertSSML('sub','<sub alias=&quot;万维网&quot;>WWW</sub>')">别名</button>
+        <button class="ssml-btn" onclick="loadSSMLSample()">加载示例</button>
+      </div>
+      <div class="ta-wrap">
+        <textarea id="ssml-ta" style="min-height:200px;font-family:'Roboto Mono',monospace;font-size:13px" placeholder="&lt;speak&gt;&#10;  你好！&lt;break time=&quot;500ms&quot;/&gt;&#10;  这是&lt;emphasis level=&quot;strong&quot;&gt;SSML&lt;/emphasis&gt;语音合成。&#10;&lt;/speak&gt;" aria-label="VoiceForge SSML输入"></textarea>
+      </div>
+      <p class="ssml-hint">将您的文字包裹在 &lt;speak&gt;...&lt;/speak&gt; 标签中。选择语音后即可生成。</p>
+      <div class="btn-row" style="margin-top:12px">
+        <button class="btn btn-primary" onclick="generateSSML()">从SSML生成</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('ssml-ta').value=''">清空</button>
+      </div>
+      <div id="ssml-player" style="margin-top:12px"></div>
+    </div>
+
+    <!-- 标签页：历史记录 -->
+    <div class="tab-pane" id="tab-history" role="tabpanel">
+      <h2 class="stitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17" aria-hidden="true"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 100.5-4.5"/><polyline points="3 2 3 7 8 7"/></svg>
+        <span>生成历史</span>
+      </h2>
+      <div id="hist-list"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+        <span style="font-size:13px;color:var(--text3)" id="hist-count"></span>
+        <button class="btn btn-ghost btn-sm" onclick="clearHist()">清空全部</button>
+      </div>
+    </div>
+
+    <!-- 标签页：指南 -->
+    <div class="tab-pane" id="tab-guide" role="tabpanel">
+      <h2 class="stitle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>如何使用VoiceForge</span>
+      </h2>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>输入文字</h3><p>输入或粘贴最多5,000个字符。点击"试试示例"可快速体验。</p></div>
+        <div class="step"><div class="step-num">2</div><h3>选择语音</h3><p>按语言筛选，从20+种神经网络语音中选择。可即时试听。</p></div>
+        <div class="step"><div class="step-num">3</div><h3>调整设置</h3><p>设置语速（0.5x-2.0x）、音调（±50Hz）和输出格式（MP3/WAV/OGG）。</p></div>
+        <div class="step"><div class="step-num">4</div><h3>生成与保存</h3><p>点击生成，在播放器中试听，然后下载您的音频文件。</p></div>
+      </div>
+      <div style="margin-top:22px">
+        <h2 class="stitle">VoiceForge常见问题</h2>
+        <div id="faq-list"></div>
+      </div>
+    </div>
+
+  </div><!-- /主卡片 -->
+
+  <!-- 功能特色卡片 -->
+  <div class="card" id="features">
+    <h2 class="stitle" style="font-size:17px;font-family:'Google Sans','Roboto',sans-serif">为什么选择VoiceForge进行文字转语音</h2>
+    <div class="features">
+      <div class="feat"><div class="feat-icon fi-b">🎤</div><h3>神经网络AI语音</h3><p>VoiceForge采用先进的神经网络TTS技术，生成自然逼真、与人声无异的语音。</p></div>
+      <div class="feat"><div class="feat-icon fi-g">🌐</div><h3>自动翻译</h3><p>当您选择不同语言的语音时，VoiceForge会自动翻译您的文字。生成前可编辑结果。</p></div>
+      <div class="feat"><div class="feat-icon fi-y">🎛️</div><h3>全面控制</h3><p>语速预设、±50Hz音调、SSML编辑器和发音助手，让您完全掌控VoiceForge的输出。</p></div>
+      <div class="feat"><div class="feat-icon fi-r">📄</div><h3>批量转换</h3><p>上传.txt文件或输入多行文字。每行即时生成独立的VoiceForge音频文件。</p></div>
+      <div class="feat"><div class="feat-icon fi-p">🧩</div><h3>SSML编辑器</h3><p>使用语音合成标记语言添加停顿、强调、韵律和别名，打造专业的VoiceForge效果。</p></div>
+      <div class="feat"><div class="feat-icon fi-t">💾</div><h3>MP3 / WAV / OGG</h3><p>VoiceForge支持三种格式导出。MP3兼容性好，WAV适合无损编辑，OGG适合网页发布。</p></div>
+    </div>
+  </div>
+
+  <!-- 侧边栏卡片 -->
+  <div class="extra-cards">
+    <div class="card sidebar-card">
+      <h3 class="stitle" style="font-size:14px">💡 VoiceForge使用技巧</h3>
+      <div id="quick-tips"></div>
+    </div>
+    <div class="card sidebar-card">
+      <h3 class="stitle" style="font-size:14px">⭐ 推荐语音</h3>
+      <div id="recommended"></div>
+    </div>
+    <div class="card sidebar-card">
+      <h3 class="stitle" style="font-size:14px">⏱️ VoiceForge时长估算</h3>
+      <p style="font-size:12px;color:var(--text2);margin-bottom:10px">基于您的文字和语速估算的音频时长：</p>
+      <div style="text-align:center;padding:10px 0">
+        <div style="font-size:32px;font-weight:700;color:var(--blue);font-family:'Google Sans','Roboto',sans-serif" id="dur-val">0:00</div>
+        <div style="font-size:12px;color:var(--text2);margin-top:4px">当前语速下</div>
+      </div>
+      <div style="font-size:12px;color:var(--text3);text-align:center" id="dur-words">0 字</div>
+    </div>
+  </div>
+</div><!-- /content-col -->
+</main>
+</div><!-- /page-home -->
+
+<!-- 关于页面 -->
+<div id="page-about" class="hidden">
+<div class="page-content">
+  <h2 class="page-h1">关于VoiceForge - 免费AI文字转语音</h2>
+  <p class="pg-sub">为所有人提供免费的AI驱动文字转语音服务。</p>
+  <p>VoiceForge是一个开源的AI驱动文字转语音平台，致力于让高质量语音合成技术惠及每一个人——完全免费。部署于HuggingFace Spaces，在云端运行，无需安装。</p>
+  <h2>我们的使命</h2>
+  <p>我们相信，自然的语音合成不应被昂贵的企业计划所垄断。VoiceForge将神经网络TTS技术民主化，让全球的内容创作者、教育工作者、开发者和无障碍倡导者都能免费使用。</p>
+  <h2>技术栈</h2>
+  <ul>
+    <li><strong>后端：</strong>Python 3.11 / Flask，部署于HuggingFace Spaces（Docker）</li>
+    <li><strong>TTS引擎：</strong>edge-tts（微软Azure神经网络TTS，免费公共API）</li>
+    <li><strong>翻译：</strong>LibreTranslate开源翻译API</li>
+    <li><strong>前端：</strong>纯HTML5 / CSS3 / JS - Google Material Design风格</li>
+    <li><strong>字体：</strong>Google Sans + Roboto + Roboto Mono（Google Fonts）</li>
+  </ul>
+  <h2>本版本新功能</h2>
+  <ul>
+    <li><strong>自动翻译：</strong>当您选择不同语言的语音时，自动翻译您的文字。生成前可编辑结果。</li>
+    <li><strong>SSML编辑器：</strong>完整的语音合成标记语言支持，一键插入停顿、强调、韵律和别名标签。</li>
+    <li><strong>发音助手：</strong>将特定词语替换为音标或替代词，修正发音错误。</li>
+    <li><strong>时长估算器：</strong>基于字数和语速设置，实时计算预估音频时长。</li>
+    <li><strong>语速预设：</strong>一键预设慢速（0.75x）、正常（1.0x）、快速（1.25x）和更快（1.5x）。</li>
+    <li><strong>双语界面：</strong>完整的中英文界面，通过地球按钮即时切换。</li>
+  </ul>
+  <h2>在HuggingFace上部署</h2>
+  <ul>
+    <li>在huggingface.co创建新的Space，选择"Docker" SDK</li>
+    <li>上传所有项目文件（app.py、Dockerfile、requirements.txt、templates/）</li>
+    <li>Space约2分钟自动构建并上线</li>
+    <li>将index.html中的canonical URL和og:url更新为您的Space URL</li>
+  </ul>
+  <hr class="divider">
+  <p style="font-size:13px;color:var(--text3)">VoiceForge是一个独立的开源项目，与微软、谷歌或HuggingFace Inc.无关。</p>
+</div>
+</div>
+
+<!-- 隐私页面 -->
+<div id="page-privacy" class="hidden">
+<div class="page-content">
+  <h2 class="page-h1">隐私政策 - VoiceForge TTS</h2>
+  <p class="pg-sub">最后更新：2026年4月</p>
+  <p>本隐私政策说明了VoiceForge在您使用我们的免费文字转语音网页应用时如何处理信息。我们致力于保护您的隐私并保持完全透明。</p>
+  <h2>1. 我们收集的信息</h2>
+  <p><strong>文字输入：</strong>提交用于TTS转换的文字仅传输至我们的服务器用于音频生成，处理完成后不会被存储。</p>
+  <p><strong>翻译数据：</strong>当使用自动翻译时，您的文字将转发至LibreTranslate进行处理。</p>
+  <p><strong>浏览器本地存储：</strong>生成历史仅存储在您浏览器的localStorage中，绝不会离开您的设备。</p>
+  <h2>2. 我们如何使用信息</h2>
+  <ul>
+    <li>实时处理文字转语音和翻译请求</li>
+    <li>提升服务性能和语音质量</li>
+    <li>检测并防止滥用，确保公平访问</li>
+  </ul>
+  <h2>3. 第三方服务</h2>
+  <ul>
+    <li><strong>微软Azure神经网络TTS：</strong>文字通过edge-tts转发至微软TTS API。</li>
+    <li><strong>LibreTranslate：</strong>用于自动翻译。开源设计，尊重隐私。</li>
+    <li><strong>HuggingFace Spaces：</strong>应用托管。请参阅HuggingFace的隐私政策。</li>
+    <li><strong>Google Fonts：</strong>从Google CDN加载字体。</li>
+  </ul>
+  <h2>4. Cookies与追踪</h2>
+  <p>VoiceForge不使用广告Cookie和追踪像素。我们不使用Google Analytics或任何第三方分析工具。</p>
+  <h2>5. 数据保留</h2>
+  <p>文字输入在音频生成后不会被保留。服务器访问日志最多保留30天用于安全目的，之后将被删除。</p>
+  <h2>6. 您的权利</h2>
+  <p>您可随时通过"清空全部"按钮清除本地历史记录。有关服务器端数据请求，请联系我们。</p>
+  <h2>7. 儿童隐私</h2>
+  <p>VoiceForge不面向13岁以下儿童。我们不会故意收集未成年人的个人信息。</p>
+  <h2>8. 联系方式</h2>
+  <p>有关隐私的咨询，请在我们的GitHub仓库提交issue，或使用HuggingFace Spaces讨论论坛。</p>
+  <hr class="divider">
+  <p style="font-size:13px;color:var(--text3)">VoiceForge是一个免费的开源项目，对您的个人数据没有任何商业意图。</p>
+</div>
+</div>
+
+<!-- 帮助页面 -->
+<div id="page-help" class="hidden">
+<div class="page-content">
+  <h2 class="page-h1">VoiceForge帮助中心</h2>
+  <p class="pg-sub">通过以下指南和资源，充分发挥VoiceForge的潜力。</p>
+
+  <h2>VoiceForge入门指南</h2>
+  <ul>
+    <li><strong>第1步：</strong>在输入框中输入您的文字（最多5,000个字符）。</li>
+    <li><strong>第2步：</strong>从我们的20+种神经网络语音库中选择一个语音。</li>
+    <li><strong>第3步：</strong>根据您的喜好调整语速和音调。</li>
+    <li><strong>第4步：</strong>点击"生成语音"并试听您的音频。</li>
+    <li><strong>第5步：</strong>下载您的音频文件或与他人分享。</li>
+  </ul>
+
+  <h2>常见问题</h2>
+  <div id="help-faq-list"></div>
+
+  <h2>VoiceForge高级功能</h2>
+  <ul>
+    <li><strong>SSML编辑器：</strong>使用语音合成标记语言精确控制发音、停顿和强调。</li>
+    <li><strong>批量转换：</strong>上传.txt文件或粘贴多行文字，一次性转换多个文本片段。</li>
+    <li><strong>自动翻译：</strong>当您选择不同语言的语音时，自动翻译您的文字。</li>
+    <li><strong>发音助手：</strong>将特定词语替换为音标拼写，修正发音错误。</li>
+    <li><strong>时长估算器：</strong>基于您的文字和语速设置查看预估音频长度。</li>
+  </ul>
+
+  <h2>联系VoiceForge支持</h2>
+  <p>如遇到任何问题或有建议，请联系我们：</p>
+  <ul>
+    <li><strong>邮箱：</strong><a href="mailto:support@ttsvoice.top">support@ttsvoice.top</a></li>
+    <li><strong>GitHub：</strong><a href="https://github.com" target="_blank" rel="noopener">VoiceForge仓库</a></li>
+    <li><strong>HuggingFace：</strong><a href="https://huggingface.co/spaces/zhong199/tts/discussions" target="_blank" rel="noopener">社区讨论</a></li>
+  </ul>
+
+  <h2>VoiceForge支持的语言</h2>
+  <ul>
+    <li>英语（美式、英式、澳式）</li>
+    <li>中文（普通话）</li>
+    <li>日语</li>
+    <li>韩语</li>
+    <li>德语</li>
+    <li>法语</li>
+    <li>西班牙语</li>
+    <li>葡萄牙语（巴西）</li>
+    <li>意大利语</li>
+    <li>印地语</li>
+    <li>阿拉伯语</li>
+    <li>俄语</li>
+  </ul>
+  <hr class="divider">
+  <p style="font-size:13px;color:var(--text3)">VoiceForge帮助中心 - 更新于2026年4月</p>
+</div>
+</div>
+
+<!-- 网站地图页面 -->
+<div id="page-sitemap" class="hidden">
+<div class="page-content">
+  <h2 class="page-h1">VoiceForge网站地图</h2>
+  <p class="pg-sub">VoiceForge所有页面和资源的完整索引。</p>
+
+  <div style="display:grid;gap:16px;margin-top:24px">
+    <div class="sitemap-card">
+      <h3>📄 主要页面</h3>
+      <ul>
+        <li><a href="/" onclick="showPage('home');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> 首页 - VoiceForge文字转语音</a></li>
+        <li><a href="/about" onclick="showPage('about');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> 关于 - 了解VoiceForge</a></li>
+        <li><a href="/privacy" onclick="showPage('privacy');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 隐私政策</a></li>
+        <li><a href="/help" onclick="showPage('help');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 帮助中心与常见问题</a></li>
+        <li><a href="/sitemap" onclick="showPage('sitemap');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg> 网站地图 - 您在此处</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-card">
+      <h3>🛠️ 工具与功能</h3>
+      <ul>
+        <li><a href="/#converter" onclick="showPage('home');setTimeout(()=>goTab('convert'),100);return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> 文字转语音转换器</a></li>
+        <li><a href="/#converter" onclick="showPage('home');setTimeout(()=>goTab('batch'),100);return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> 批量文字转换器</a></li>
+        <li><a href="/#converter" onclick="showPage('home');setTimeout(()=>goTab('ssml'),100);return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> SSML编辑器</a></li>
+        <li><a href="/#converter" onclick="showPage('home');setTimeout(()=>goTab('history'),100);return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="12 8 12 12 14 14"/><path d="M3.05 11a9 9 0 100.5-4.5"/></svg> 生成历史</a></li>
+        <li><a href="/#converter" onclick="showPage('home');setTimeout(()=>goTab('guide'),100);return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/></svg> 用户指南与常见问题</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-card">
+      <h3>📚 资源</h3>
+      <ul>
+        <li><a href="/help" onclick="showPage('help');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> 完整用户指南</a></li>
+        <li><a href="/privacy" onclick="showPage('privacy');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> 隐私与安全</a></li>
+        <li><a href="/about" onclick="showPage('about');return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> 技术与鸣谢</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg> GitHub仓库</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-card">
+      <h3>🌐 外部链接</h3>
+      <ul>
+        <li><a href="https://huggingface.co/spaces/zhong199/tts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> HuggingFace Space</a></li>
+        <li><a href="https://huggingface.co/spaces/zhong199/tts/discussions" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> 社区讨论</a></li>
+        <li><a href="https://github.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg> 报告问题</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <p style="font-size:13px;color:var(--text3)">VoiceForge网站地图 - 所有页面和资源。最后更新：2026年4月</p>
+</div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+<div class="footer-inner">
+  <div>
+    <div class="footer-brand">🎙️ VoiceForge TTS</div>
+    <div class="footer-copy">© 2026 VoiceForge。免费AI在线文字转语音。由HuggingFace Spaces和神经网络TTS驱动。</div>
+  </div>
+  <nav class="footer-links" aria-label="页脚导航">
+    <a href="/" onclick="showPage('home');return false">首页</a>
+    <a href="/about" onclick="showPage('about');return false">关于</a>
+    <a href="/privacy" onclick="showPage('privacy');return false">隐私</a>
+    <a href="/help" onclick="showPage('help');return false">帮助</a>
+    <a href="/sitemap" onclick="showPage('sitemap');return false">网站地图</a>
+    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+</div>
+<div class="trust-section">
+  <p>VoiceForge是一个免费开源的AI文字转语音工具。我们尊重您的隐私，绝不存储您的文字。</p>
+  <p>联系我们：<a href="mailto:support@ttsvoice.top">support@ttsvoice.top</a> | 
+  <a href="/privacy" onclick="showPage('privacy');return false">隐私政策</a> | 
+  <a href="/help" onclick="showPage('help');return false">帮助中心</a> |
+  <a href="/sitemap" onclick="showPage('sitemap');return false">网站地图</a></p>
+  <p>由HuggingFace Spaces和微软Azure神经网络TTS技术驱动。</p>
+</div>
+</footer>
+
+<!-- Cloudflare Insights（延迟加载） -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "your-cloudflare-token"}'></script>
+
+<script>
+'use strict';
+
+/* --- 语音数据 --- */
+const VOICES = [
+  {id:'aria',    name:'Aria',    lang:'英语（美式）', cat:'en', gender:'F', style:'温暖自然',    flag:'🇺🇸', edge:'en-US-AriaNeural',    langCode:'en'},
+  {id:'jenny',   name:'Jenny',   lang:'英语（美式）', cat:'en', gender:'F', style:'友好清晰',  flag:'🇺🇸', edge:'en-US-JennyNeural',   langCode:'en'},
+  {id:'guy',     name:'Guy',     lang:'英语（美式）', cat:'en', gender:'M', style:'专业沉稳',      flag:'🇺🇸', edge:'en-US-GuyNeural',     langCode:'en'},
+  {id:'davis',   name:'Davis',   lang:'英语（美式）', cat:'en', gender:'M', style:'随性直率',   flag:'🇺🇸', edge:'en-US-DavisNeural',   langCode:'en'},
+  {id:'sara',    name:'Sara',    lang:'英语（美式）', cat:'en', gender:'F', style:'明亮愉悦', flag:'🇺🇸', edge:'en-US-SaraNeural',    langCode:'en'},
+  {id:'sonia',   name:'Sonia',   lang:'英语（英式）', cat:'en', gender:'F', style:'优雅英伦',   flag:'🇬🇧', edge:'en-GB-SoniaNeural',   langCode:'en'},
+  {id:'ryan',    name:'Ryan',    lang:'英语（英式）', cat:'en', gender:'M', style:'自信英伦', flag:'🇬🇧', edge:'en-GB-RyanNeural',    langCode:'en'},
+  {id:'natasha', name:'Natasha', lang:'英语（澳式）', cat:'en', gender:'F', style:'明亮澳洲', flag:'🇦🇺', edge:'en-AU-NatashaNeural', langCode:'en'},
+  {id:'william', name:'William', lang:'英语（澳式）', cat:'en', gender:'M', style:'自然澳洲',flag:'🇦🇺', edge:'en-AU-WilliamNeural', langCode:'en'},
+  {id:'xiaoxiao',name:'Xiaoxiao',lang:'中文（普通话）',  cat:'zh', gender:'F', style:'甜美清晰',flag:'🇨🇳', edge:'zh-CN-XiaoxiaoNeural', langCode:'zh'},
+  {id:'yunxi',   name:'Yunxi',   lang:'中文（普通话）',  cat:'zh', gender:'M', style:'标准普通话',flag:'🇨🇳', edge:'zh-CN-YunxiNeural',   langCode:'zh'},
+  {id:'yunjian', name:'Yunjian', lang:'中文（普通话）',  cat:'zh', gender:'M', style:'沉稳大气',  flag:'🇨🇳', edge:'zh-CN-YunjianNeural', langCode:'zh'},
+  {id:'xiaoyi',  name:'Xiaoyi',  lang:'中文（普通话）',  cat:'zh', gender:'F', style:'活力青春',  flag:'🇨🇳', edge:'zh-CN-XiaoyiNeural',  langCode:'zh'},
+  {id:'xiaomeng',name:'Xiaomeng',lang:'中文（普通话）',  cat:'zh', gender:'F', style:'温柔亲切',  flag:'🇨🇳', edge:'zh-CN-XiaomengNeural',langCode:'zh'},
+  {id:'nanami',  name:'Nanami',  lang:'日语',           cat:'ja', gender:'F', style:'温柔自然',flag:'🇯🇵', edge:'ja-JP-NanamiNeural',  langCode:'ja'},
+  {id:'keita',   name:'Keita',   lang:'日语',           cat:'ja', gender:'M', style:'自然沉稳', flag:'🇯🇵', edge:'ja-JP-KeitaNeural',   langCode:'ja'},
+  {id:'seoyeon', name:'Seoyeon', lang:'韩语',            cat:'ko', gender:'F', style:'明亮清晰', flag:'🇰🇷', edge:'ko-KR-SunHiNeural',   langCode:'ko'},
+  {id:'injoon',  name:'InJoon',  lang:'韩语',            cat:'ko', gender:'M', style:'自信男声', flag:'🇰🇷', edge:'ko-KR-InJoonNeural',  langCode:'ko'},
+  {id:'amala',   name:'Amala',   lang:'德语',         cat:'eu', gender:'F', style:'精准德语', flag:'🇩🇪', edge:'de-DE-AmalaNeural',   langCode:'de'},
+  {id:'conradde',name:'Conrad',  lang:'德语',         cat:'eu', gender:'M', style:'浑厚德语',  flag:'🇩🇪', edge:'de-DE-ConradNeural',  langCode:'de'},
+  {id:'denise',  name:'Denise',  lang:'法语',        cat:'eu', gender:'F', style:'优雅法语', flag:'🇫🇷', edge:'fr-FR-DeniseNeural',  langCode:'fr'},
+  {id:'elvira',  name:'Elvira',  lang:'西班牙语',         cat:'eu', gender:'F', style:'温暖西语',   flag:'🇪🇸', edge:'es-ES-ElviraNeural',  langCode:'es'},
+  {id:'francesca',name:'Francesca',lang:'意大利语',      cat:'eu', gender:'F', style:'自然意语',flag:'🇮🇹', edge:'it-IT-FrancescaNeural',langCode:'it'},
+  {id:'francisca',name:'Francisca',lang:'葡萄牙语（巴西）',cat:'pt', gender:'F', style:'巴西葡语',flag:'🇧🇷', edge:'pt-BR-FranciscaNeural',langCode:'pt'},
+  {id:'sveta',   name:'Sveta',   lang:'俄语',          cat:'ru', gender:'F', style:'清晰俄语',  flag:'🇷🇺', edge:'ru-RU-SvetlanaNeural',langCode:'ru'},
+  {id:'madhur',  name:'Madhur',  lang:'印地语',            cat:'hi', gender:'M', style:'自然印地语',  flag:'🇮🇳', edge:'hi-IN-MadhurNeural',  langCode:'hi'},
+  {id:'zariyah', name:'Zariyah', lang:'阿拉伯语',           cat:'ar', gender:'F', style:'清晰阿拉伯语',   flag:'🇸🇦', edge:'ar-SA-ZariyahNeural', langCode:'ar'},
+];
+
+const CAT_LABELS = {all:'全部',en:'英语',zh:'中文',ja:'日语',ko:'韩语',eu:'欧洲语言',pt:'葡萄牙语',ru:'俄语',hi:'印地语',ar:'阿拉伯语'};
+
+/* --- 状态 --- */
+let selVoice = 'jenny';
+let filter = 'all';
+let blob = null, audioUrl = null;
+let hist = JSON.parse(localStorage.getItem('vf2_hist')||'[]');
+let genCount = parseInt(localStorage.getItem('vf2_count')||'0');
+let translateTimer = null;
+
+/* --- 启动 --- */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderFilters();
+  renderVoices();
+  renderRecommended();
+  renderHist();
+  renderFaq();
+  renderHelpFaq();
+  renderTips();
+  updateStat();
+  updateSliderBg(document.getElementById('speed'));
+  updateSliderBg(document.getElementById('pitch'));
+  window.addEventListener('scroll',()=>{
+    document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);
+  });
+});
+
+/* --- 页面与标签页 --- */
+function showPage(name){
+  const pages = ['home','about','privacy','help','sitemap'];
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.toggle('hidden',p!==name);
+  });
+  const navIds = ['nl-home','nl-about','nl-privacy','nl-help','nl-sitemap'];
+  navIds.forEach((id,i)=>{
+    document.getElementById(id).classList.toggle('active',pages[i]===name);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goTab(name){
+  const names=['convert','batch','ssml','history','guide'];
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+    b.classList.toggle('active',names[i]===name);
+  });
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  const pane=document.getElementById('tab-'+name);
+  if(pane) pane.classList.add('active');
+}
+
+/* --- 语音选择网格 --- */
+function renderFilters(){
+  const cats = ['all','en','zh','ja','ko','eu','pt','ru','hi','ar'];
+  document.getElementById('vfilters').innerHTML = cats.map(c=>`
+    <button class="vf${filter===c ? ' on':''}" onclick="setFilter('${c}',this)">${CAT_LABELS[c]||c}</button>
+  `).join('');
+}
+function setFilter(cat,btn){
+  filter=cat;
+  document.querySelectorAll('.vf').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderVoices();
+}
+function renderVoices(){
+  const list = filter==='all' ? VOICES:VOICES.filter(v=>v.cat===filter);
+  document.getElementById('vgrid').innerHTML = list.map(v=>`
+    <div class="vc${v.id===selVoice ? ' sel':''}" onclick="pickVoice('${v.id}')" role="radio" aria-checked="${v.id===selVoice}" title="${v.name} - ${v.lang}">
+      <div class="vc-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <span class="vc-flag">${v.flag}</span>
+      <div class="vc-name">${v.name}</div>
+      <div class="vc-lang">${v.lang}</div>
+      <div class="vc-style">${v.style}</div>
+    </div>
+  `).join('');
+}
+function pickVoice(id){
+  selVoice = id;
+  renderVoices();
+  checkTranslateMismatch(id);
+}
+
+/* --- 自动翻译 --- */
+function detectInputLang(text){
+  if(/[\u4e00-\u9fff]/.test(text)) return 'zh';
+  if(/[\u3040-\u309f\u30a0-\u30ff]/.test(text)) return 'ja';
+  if(/[\uac00-\ud7af]/.test(text)) return 'ko';
+  if(/[\u0400-\u04ff]/.test(text)) return 'ru';
+  if(/[\u0600-\u06ff]/.test(text)) return 'ar';
+  if(/[\u0900-\u097f]/.test(text)) return 'hi';
+  return 'en';
+}
+function checkTranslateMismatch(voiceId){
+  const text = document.getElementById('tts-text').value.trim();
+  if(!text){ hideTranslateBox(); return; }
+  const v = VOICES.find(x=>x.id===voiceId);
+  if(!v) return;
+  const inputLang = detectInputLang(text);
+  const targetLang = v.langCode;
+  if(inputLang === targetLang || targetLang === 'en' && inputLang === 'en'){
+    hideTranslateBox();
+  } else {
+    showTranslating(targetLang);
+    clearTimeout(translateTimer);
+    translateTimer = setTimeout(()=>doTranslate(text,targetLang), 600);
+  }
+}
+function showTranslating(target){
+  const box = document.getElementById('translate-box');
+  box.classList.remove('hidden');
+  document.getElementById('trans-status').innerHTML = '<span class="spinner spinner-blue" style="width:12px;height:12px"></span> 正在翻译...';
+  document.getElementById('translate-ta').value = '';
+}
+function hideTranslateBox(){
+  document.getElementById('translate-box').classList.add('hidden');
+}
+async function doTranslate(text, targetLang){
+  try {
+    const sourceLang = detectInputLang(text);
+    const res = await fetch('/api/translate',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({text, target:targetLang, source:sourceLang})
+    });
+    const j = await res.json();
+    const translated = (j.translated || '').trim();
+    document.getElementById('translate-ta').value = translated || text;
+    const langNames = {zh:'中文',ja:'日语',ko:'韩语',de:'德语',fr:'法语',es:'西班牙语',it:'意大利语',pt:'葡萄牙语',ru:'俄语',hi:'印地语',ar:'阿拉伯语',en:'英语'};
+    const tn = langNames[targetLang] || targetLang;
+    if (translated && translated === text) {
+      document.getElementById('trans-status').innerHTML = '⚠️ 翻译返回了原文。您可以在生成前编辑。';
+    } else {
+      document.getElementById('trans-status').innerHTML = `✓ 已翻译为${tn}。您可以在上方编辑。`;
+    }
+  } catch(e) {
+    document.getElementById('translate-ta').value = text;
+    document.getElementById('trans-status').innerHTML = '⚠️ 翻译服务不可用，使用原文';
+  }
+}
+async function retranslate(){
+  const text = document.getElementById('tts-text').value.trim();
+  const v = VOICES.find(x=>x.id===selVoice);
+  if(!text||!v) return;
+  showTranslating(v.langCode);
+  await doTranslate(text, v.langCode);
+}
+function useOriginal(){
+  document.getElementById('translate-ta').value = document.getElementById('tts-text').value;
+  document.getElementById('trans-status').innerHTML = 'ℹ️ 使用原文（未翻译）';
+}
+function getTextToGenerate(){
+  const box = document.getElementById('translate-box');
+  if(!box.classList.contains('hidden')){
+    const ta = document.getElementById('translate-ta').value.trim();
+    if(ta) return ta;
+  }
+  return document.getElementById('tts-text').value.trim();
+}
+
+/* --- 文字辅助 --- */
+function onInput(){
+  const text = document.getElementById('tts-text').value;
+  const len = text.length;
+  const el = document.getElementById('char-count');
+  el.textContent = `${len} / 5000`;
+  el.className = 'char-count'+(len>4500 ? ' char-warn':'');
+  updateDuration();
+  clearTimeout(translateTimer);
+  if(text.trim()) translateTimer = setTimeout(()=>checkTranslateMismatch(selVoice),1200);
+  else hideTranslateBox();
+}
+function updateDuration(){
+  const text = document.getElementById('tts-text').value;
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const speed = parseFloat(document.getElementById('speed').value)||1;
+  const wpm = 150 * speed;
+  const secs = Math.round((words/wpm)*60);
+  const m = Math.floor(secs/60), s=secs%60;
+  document.getElementById('dur-val').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  document.getElementById('dur-words').textContent = `${words} 字`;
+}
+
+const SAMPLES = [
+  "欢迎使用VoiceForge！我可以将任何书面文字在几秒内转换成自然流畅的语音。试试调整语速和音调滑块，为您的项目找到最完美的声音。",
+  "敏捷的棕色狐狸跳过了那只懒狗。这个经典句子几个世纪以来一直被用来测试字体和语音合成系统。",
+];
+let sIdx=0;
+function sampleText(){
+  document.getElementById('tts-text').value = SAMPLES[sIdx++%SAMPLES.length];
+  onInput();
+}
+function clearText(){ document.getElementById('tts-text').value=''; onInput(); hideTranslateBox(); }
+async function pasteText(){
+  try{ const t=await navigator.clipboard.readText(); document.getElementById('tts-text').value=t.slice(0,5000); onInput(); }
+  catch{ toast('剪贴板访问被拒绝——请使用Ctrl+V','error'); }
+}
+function countWords(){
+  const text=document.getElementById('tts-text').value.trim();
+  if(!text){ toast('文字框为空'); return; }
+  const words=text.split(/\s+/).filter(Boolean).length;
+  const chars=text.length;
+  const mins=Math.ceil(words/150);
+  toast(`${words} 词 · ${chars} 字符 · 约${mins}分钟阅读`,'success');
+}
+
+/* --- 滑块 --- */
+function updateSliderBg(el){
+  const min=parseFloat(el.min),max=parseFloat(el.max),val=parseFloat(el.value);
+  const pct=((val-min)/(max-min))*100;
+  el.style.setProperty('--pct',pct+'%');
+}
+function onSpeed(el){
+  updateSliderBg(el);
+  document.getElementById('speed-val').textContent=parseFloat(el.value).toFixed(1)+'x';
+  document.querySelectorAll('#speed-presets .preset-btn').forEach(b=>b.classList.remove('on'));
+  updateDuration();
+}
+function onPitch(el){
+  updateSliderBg(el);
+  const v=parseInt(el.value);
+  document.getElementById('pitch-val').textContent=(v>=0 ? '+':'')+v+' Hz';
+}
+function setSpeed(v){
+  const el=document.getElementById('speed');
+  el.value=v;
+  onSpeed(el);
+  document.querySelectorAll('#speed-presets .preset-btn').forEach((b,i)=>{
+    b.classList.toggle('on',[.75,1.0,1.25,1.5][i]===v);
+  });
+}
+
+/* --- 生成TTS --- */
+async function generate(){
+  const raw=document.getElementById('tts-text').value.trim();
+  if(!raw){ toast('请先输入文字','error'); return; }
+  if(raw.length>5000){ toast('文字超过5000字符限制','error'); return; }
+  const text = getTextToGenerate();
+  const voice=VOICES.find(v=>v.id===selVoice);
+  const speed=parseFloat(document.getElementById('speed').value);
+  const pitch=parseInt(document.getElementById('pitch').value);
+  const btn=document.getElementById('gen-btn');
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span> 正在生成...';
+  try{
+    const rate=(speed>=1 ? '+':'')+Math.round((speed-1)*100)+'%';
+    const pitchStr=(pitch>=0 ? '+':'')+pitch+'Hz';
+    const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,voice:voice.edge,rate,pitch:pitchStr})});
+    let b;
+    if(res.ok){
+      const ct=res.headers.get('content-type')||'';
+      b=ct.includes('json') ? b64blob((await res.json()).audio,'audio/mpeg') : await res.blob();
+    } else throw new Error('服务器 '+res.status);
+    setAudio(b,voice,speed,pitch,raw);
+  } catch(err){
+    console.warn('后端不可用:',err.message);
+    await speechFallback(text,voice,speed,pitch,raw);
+  }
+  btn.disabled=false;
+  btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21"/></svg> <span>生成语音</span>';
+}
+function b64blob(b64,mime){
+  const bin=atob(b64),buf=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) buf[i]=bin.charCodeAt(i);
+  return new Blob([buf],{type:mime});
+}
+async function speechFallback(text,voice,speed,pitch,raw){
+  return new Promise(resolve=>{
+    if(!window.speechSynthesis){ toast('TTS不可用','error'); resolve(); return; }
+    const u=new SpeechSynthesisUtterance(text);
+    u.rate=speed; u.pitch=1+pitch/50;
+    const vs=speechSynthesis.getVoices();
+    const m=vs.find(v=>v.lang.startsWith(voice.langCode));
+    if(m) u.voice=m;
+    u.onend=()=>{ toast('通过浏览器语音播放（后端离线）'); bumpCount(); addHist(raw,voice,speed,pitch); resolve(); };
+    u.onerror=()=>{ toast('语音播放失败','error'); resolve(); };
+    speechSynthesis.speak(u);
+  });
+}
+function setAudio(b,voice,speed,pitch,raw){
+  if(audioUrl) URL.revokeObjectURL(audioUrl);
+  blob=b; audioUrl=URL.createObjectURL(b);
+  const audio=document.getElementById('audio');
+  audio.src=audioUrl;
+  document.getElementById('p-av').textContent=voice.flag;
+  document.getElementById('p-name').textContent=`${voice.flag} ${voice.name} - ${voice.lang}`;
+  document.getElementById('p-info').textContent=`${raw.length} 字符 · ${speed.toFixed(1)}x · ${pitch>=0 ? '+':''}${pitch}Hz`;
+  document.getElementById('player-wrap').classList.add('show');
+  document.getElementById('dl-btn').disabled=false;
+  document.getElementById('share-btn').disabled=false;
+  document.getElementById('wave-bars').classList.remove('paused');
+  audio.play().catch(()=>{});
+  bumpCount(); addHist(raw,voice,speed,pitch);
+  toast('✓ 音频已生成！','success');
+}
+function bumpCount(){
+  genCount++; localStorage.setItem('vf2_count',genCount);
+  document.getElementById('stat-gen').textContent=genCount;
+}
+
+/* --- 下载 / 分享 --- */
+function dlAudio(){
+  if(!blob){ toast('还没有音频','error'); return; }
+  const fmt=document.getElementById('fmt').value;
+  const v=VOICES.find(x=>x.id===selVoice);
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`voiceforge_${v.name.toLowerCase()}_${Date.now()}.${fmt}`;
+  a.click();
+  toast('正在下载...');
+}
+function shareIt(){
+  if(navigator.share) navigator.share({title:'VoiceForge TTS',url:location.href}).catch(()=>{});
+  else navigator.clipboard.writeText(location.href).then(()=>toast('链接已复制！','success'));
+}
+
+/* --- 历史记录 --- */
+function addHist(text,voice,speed,pitch){
+  hist.unshift({id:Date.now(),text:text.slice(0,80)+(text.length>80 ? '...':''),voice:voice.name,flag:voice.flag,lang:voice.lang,speed,pitch,time:new Date().toLocaleTimeString(),url:audioUrl});
+  if(hist.length>20) hist.pop();
+  localStorage.setItem('vf2_hist',JSON.stringify(hist.map(h=>({...h,url:null}))));
+  renderHist();
+}
+function renderHist(){
+  const el=document.getElementById('hist-list');
+  document.getElementById('hist-count').textContent=`${hist.length} 条记录`;
+  if(!hist.length){
+    el.innerHTML='<div style="text-align:center;padding:36px;color:var(--text3);font-size:14px"><div style="font-size:36px;margin-bottom:8px">🎵</div>暂无历史记录</div>';
+    return;
+  }
+  el.innerHTML=hist.map(h=>`
+    <div class="hist-item">
+      <span style="font-size:18px;flex-shrink:0">${h.flag}</span>
+      <div style="flex:1;min-width:0">
+        <div class="hist-text">${h.text}</div>
+        <div class="hist-meta">${h.voice} · ${h.time}</div>
+      </div>
+      <span class="hist-badge">${h.speed}x / ${h.pitch>=0 ? '+':''}${h.pitch}Hz</span>
+      ${h.url ? `<button class="hist-play" onclick="replayHist('${h.id}')">▶</button>`:''}
+    </div>
+  `).join('');
+}
+function replayHist(id){
+  const h=hist.find(x=>x.id==id);
+  if(h&&h.url){ document.getElementById('audio').src=h.url; document.getElementById('player-wrap').classList.add('show'); document.getElementById('audio').play(); goTab('convert'); }
+}
+function clearHist(){ hist=[]; localStorage.removeItem('vf2_hist'); renderHist(); toast('历史记录已清空'); }
+
+/* --- 批量转换 --- */
+function dzOver(e){ e.preventDefault(); document.getElementById('drop-zone').classList.add('drag'); }
+function dzLeave(){ document.getElementById('drop-zone').classList.remove('drag'); }
+function dzDrop(e){ e.preventDefault(); dzLeave(); const f=e.dataTransfer.files[0]; if(f) readF(f); }
+function loadFile(e){ readF(e.target.files[0]); }
+function readF(f){ const r=new FileReader(); r.onload=ev=>{ document.getElementById('batch-ta').value=ev.target.result.slice(0,20000); toast(`已加载：${f.name}`,'success'); }; r.readAsText(f); }
+
+async function runBatch(){
+  const lines=document.getElementById('batch-ta').value.split('\n').map(l=>l.trim()).filter(Boolean);
+  if(!lines.length){ toast('没有可转换的行','error'); return; }
+  const out=document.getElementById('batch-out');
+  out.innerHTML=`<p style="font-size:13px;color:var(--text2);margin-bottom:10px">正在处理 ${lines.length} 行...</p>`;
+  const voice=VOICES.find(v=>v.id===selVoice);
+  const speed=parseFloat(document.getElementById('speed').value);
+  const pitch=parseInt(document.getElementById('pitch').value);
+  const rate=(speed>=1 ? '+':'')+Math.round((speed-1)*100)+'%';
+  const pitchStr=(pitch>=0 ? '+':'')+pitch+'Hz';
+  for(let i=0;i<Math.min(lines.length,10);i++){
+    const line=lines[i];
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:10px;padding:11px;border:1px solid var(--border);border-radius:12px;margin-bottom:8px;font-size:13px;background:#fff;animation:fadeUp .25s ease both; flex-wrap:wrap';
+    row.innerHTML=`<span>${voice.flag}</span><div style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">${line.slice(0,60)}${line.length>60 ? '...':''}</div><span class="spinner spinner-blue" style="flex-shrink:0"></span>`;
+    out.appendChild(row);
+    try{
+      const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:line,voice:voice.edge,rate,pitch:pitchStr})});
+      if(res.ok){
+        const j=await res.json();
+        const b=b64blob(j.audio,'audio/mpeg');
+        const u=URL.createObjectURL(b);
+        row.lastElementChild.outerHTML=`<audio controls src="${u}" style="height:28px;max-width:180px;flex-shrink:0"></audio><a href="${u}" download="line_${i+1}.mp3" style="font-size:11px;color:var(--blue);flex-shrink:0">→ 保存</a>`;
+      } else throw new Error();
+    } catch{ row.lastElementChild.outerHTML='<span style="color:var(--red);font-size:12px;flex-shrink:0">失败</span>'; }
+  }
+  if(lines.length>10) out.innerHTML+=`<p style="font-size:12px;color:var(--text3);margin-top:6px">仅显示${lines.length}行中的前10行</p>`;
+}
+
+/* --- SSML编辑器 --- */
+function insertSSML(type,tag){
+  const ta=document.getElementById('ssml-ta');
+  const sel=ta.value.substring(ta.selectionStart,ta.selectionEnd);
+  const ins=sel ? tag.replace('文字',sel):tag;
+  const s=ta.selectionStart;
+  ta.value=ta.value.slice(0,s)+ins+ta.value.slice(ta.selectionEnd);
+  ta.selectionStart=ta.selectionEnd=s+ins.length;
+  ta.focus();
+}
+function loadSSMLSample(){
+  document.getElementById('ssml-ta').value=`<speak>
+  你好！
+  <break time="500ms"/>
+  这是一个<emphasis level="strong">重要的</emphasis>演示。
+  <break time="300ms"/>
+  <prosody rate="slow" pitch="high">慢速且高音调。</prosody>
+</speak>`;
+}
+async function generateSSML(){
+  const ssml=document.getElementById('ssml-ta').value.trim();
+  if(!ssml){ toast('请先输入SSML内容','error'); return; }
+  const voice=VOICES.find(v=>v.id===selVoice);
+  const speed=parseFloat(document.getElementById('speed').value);
+  const pitch=parseInt(document.getElementById('pitch').value);
+  const rate=(speed>=1 ? '+':'')+Math.round((speed-1)*100)+'%';
+  const pitchStr=(pitch>=0 ? '+':'')+pitch+'Hz';
+  const out=document.getElementById('ssml-player');
+  out.innerHTML='<div style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text2)"><span class="spinner spinner-blue"></span> 正在生成...</div>';
+  try{
+    const res=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:ssml,voice:voice.edge,rate,pitch:pitchStr})});
+    if(res.ok){
+      const j=await res.json();
+      const b=b64blob(j.audio,'audio/mpeg');
+      const u=URL.createObjectURL(b);
+      out.innerHTML=`<audio controls src="${u}" style="width:100%;margin-top:8px"></audio>`;
+      toast('SSML音频已生成！','success');
+    } else throw new Error();
+  } catch{ out.innerHTML='<div style="color:var(--red);font-size:13px">生成失败——请检查SSML语法</div>'; }
+}
+
+/* --- 发音助手 --- */
+function openPhonetic(){
+  const p=document.getElementById('phonetic-panel');
+  p.classList.toggle('show');
+}
+function applyPhonetic(){
+  const from=document.getElementById('ph-from').value.trim();
+  const to=document.getElementById('ph-to').value.trim();
+  if(!from||!to){ toast('请填写两个字段','error'); return; }
+  const ta=document.getElementById('tts-text');
+  const count=(ta.value.match(new RegExp(from,'g'))||[]).length;
+  if(!count){ toast(`未找到"${from}"`,'error'); return; }
+  ta.value=ta.value.replaceAll(from,to);
+  onInput();
+  toast(`已替换 ${count} 处`,'success');
+  document.getElementById('ph-from').value='';
+  document.getElementById('ph-to').value='';
+}
+
+/* --- 侧边栏 --- */
+function renderTips(){
+  const tips=['使用标点符号创造自然停顿','0.8x语速非常适合有声书','1.5x语速很适合摘要朗读','英式语音为正式文本增添优雅感','SSML <break>标签可添加自定义停顿','使用批量模式处理长篇文档','WAV格式适合后期编辑','发音助手可修正棘手词语'];
+  document.getElementById('quick-tips').innerHTML=tips.map(t=>`
+    <div class="quick-tip-item"><span class="tip-icon">→</span><span>${t}</span></div>
+  `).join('');
+}
+function renderRecommended(){
+  const recs=['jenny','xiaoxiao','nanami','sonia'].map(id=>VOICES.find(v=>v.id===id)).filter(Boolean);
+  document.getElementById('recommended').innerHTML=recs.map(v=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:all var(--tr)"
+         onmouseover="this.style.paddingLeft='6px'" onmouseout="this.style.paddingLeft='0'"
+         onclick="pickVoice('${v.id}');goTab('convert');toast('已选择 ${v.name}','success')">
+      <span style="font-size:20px">${v.flag}</span>
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:500">${v.name} <span style="font-size:11px;color:var(--text3)">${v.lang}</span></div>
+        <div style="font-size:11px;color:var(--text2)">${v.style}</div>
+      </div>
+      <span style="font-size:12px;color:var(--blue)">→</span>
+    </div>
+  `).join('');
+}
+
+/* --- 常见问题 --- */
+function renderFaq(){
+  const items = [
+    {q:'VoiceForge完全免费吗？',a:'是的！VoiceForge 100%免费，无任何费用、订阅或账户要求。每次请求最多可转换5,000个字符，不限次数。'},
+    {q:'VoiceForge的自动翻译如何工作？',a:'当您选择的语音语言与输入文字语言不同时，VoiceForge会检测到不匹配，并使用LibreTranslate自动翻译您的文字。您可以编辑翻译结果，或使用"使用原文"选项跳过翻译。'},
+    {q:'VoiceForge支持哪些语言？',a:'英语（美式/英式/澳式）、中文（普通话）、日语、韩语、德语、法语、西班牙语、葡萄牙语、意大利语、印地语、阿拉伯语等。'},
+    {q:'VoiceForge的SSML编辑器是什么？',a:'SSML（语音合成标记语言）是一种基于XML的语言，可让您精细控制语音输出。您可以添加停顿、改变强调、在特定词语上控制语速/音调，以及使用别名修正发音。'},
+    {q:'我可以将VoiceForge生成的音频用于商业用途吗？',a:'是的，可用于个人、教育和大多数商业用途。大规模商业部署请查阅微软TTS服务条款。'},
+    {q:'VoiceForge会存储或分享我的文字吗？',a:'不会。文字在内存中处理用于音频生成，完成后立即丢弃。您的历史记录仅存储在您浏览器的localStorage中。'},
+    {q:'为什么VoiceForge有时生成速度较慢？',a:'速度取决于文字长度和服务器负载。通常不超过3秒。HuggingFace Spaces在闲置后可能冷启动，导致一次性10-20秒的延迟。'},
+  ];
+  document.getElementById('faq-list').innerHTML=items.map(f=>`
+    <div class="faq-item">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        ${f.q}<span class="faq-arr">▾</span>
+      </button>
+      <div class="faq-a">${f.a}</div>
+    </div>
+  `).join('');
+}
+
+/* --- 帮助页面常见问题 --- */
+function renderHelpFaq(){
+  const helpFaqList = document.getElementById('help-faq-list');
+  if(!helpFaqList) return;
+  const items = [
+    {q:'如何使用VoiceForge生成我的第一段音频？',a:'只需在输入框中输入或粘贴您的文字，从网格中选择一个语音，根据需要调整语速和音调，然后点击"生成语音"按钮。您的音频将显示在下方播放器中。'},
+    {q:'我可以保存生成的音频文件吗？',a:'当然！生成音频后，点击"下载"按钮。您可以将音频保存为MP3、WAV或OGG格式。'},
+    {q:'最大文字长度是多少？',a:'VoiceForge每次生成请求最多支持5,000个字符。对于更长的文字，请使用批量转换功能将文字拆分为多行。'},
+    {q:'如何修正发音错误的词语？',a:'使用"发音助手"功能。点击发音按钮，输入您要替换的词语及其音标拼写或替代词，然后点击应用。'},
+    {q:'在哪里可以报告问题或建议功能？',a:'您可以在我们的GitHub仓库报告问题，或加入HuggingFace Spaces的讨论。链接可在网站地图和页脚中找到。'},
+  ];
+  helpFaqList.innerHTML = items.map(f=>`
+    <div class="faq-item">
+      <button class="faq-q" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        ${f.q}<span class="faq-arr">▾</span>
+      </button>
+      <div class="faq-a">${f.a}</div>
+    </div>
+  `).join('');
+}
+
+/* --- 提示消息 --- */
+let _tt;
+function toast(msg,type=''){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.className='toast show'+(type ? ' '+type:'');
+  clearTimeout(_tt);
+  _tt=setTimeout(()=>el.classList.remove('show'),2800);
+}
+
+function updateStat(){
+  document.getElementById('stat-gen').textContent=genCount;
+}
+</script>
+</body>
+</html>
