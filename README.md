@@ -57,6 +57,8 @@ This repository includes a weekly white-hat promotion workflow that verifies the
 
 The repository also includes a daily growth health workflow that checks the website, sitemap, llms.txt, privacy page, use-case pages, and GitHub README so broken discovery surfaces are caught quickly.
 
+See [TRAFFIC-GROWTH.md](TRAFFIC-GROWTH.md) for the automated growth system and the path toward 3,000 legitimate daily visits.
+
 ## Responsible Promotion
 
 Please share VoiceForge only where it is relevant:
