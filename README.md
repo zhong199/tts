@@ -2,6 +2,9 @@
 
 Free online AI voice generator and text to speech web app.
 
+[![Daily growth health](https://github.com/zhong199/tts/actions/workflows/daily-growth-health.yml/badge.svg)](https://github.com/zhong199/tts/actions/workflows/daily-growth-health.yml)
+[![Weekly white-hat promotion](https://github.com/zhong199/tts/actions/workflows/weekly-promotion.yml/badge.svg)](https://github.com/zhong199/tts/actions/workflows/weekly-promotion.yml)
+
 [Live Website](https://ttsvoice.top) · [FAQ](https://ttsvoice.top/faq-en) · [Use Cases](https://ttsvoice.top/use-cases) · [Privacy](https://ttsvoice.top/privacy)
 
 ## What It Does
@@ -51,6 +54,8 @@ The live site exposes:
 - `https://ttsvoice.top/voiceforge-indexnow-20260606.txt`
 
 This repository includes a weekly white-hat promotion workflow that verifies the site and submits canonical URLs to IndexNow. It does not create spam links, fake traffic, mass comments, or paid link schemes.
+
+The repository also includes a daily growth health workflow that checks the website, sitemap, llms.txt, privacy page, use-case pages, and GitHub README so broken discovery surfaces are caught quickly.
 
 ## Responsible Promotion
 

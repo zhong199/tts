@@ -1,0 +1,39 @@
+name: Daily growth health
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 2 * * *"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check public growth surfaces
+        run: |
+          set -euo pipefail
+          urls=(
+            "https://ttsvoice.top/"
+            "https://ttsvoice.top/use-cases"
+            "https://ttsvoice.top/use-cases/youtube-voiceover"
+            "https://ttsvoice.top/use-cases/japanese-tts"
+            "https://ttsvoice.top/faq-en"
+            "https://ttsvoice.top/privacy"
+            "https://ttsvoice.top/sitemap.xml"
+            "https://ttsvoice.top/llms.txt"
+            "https://ttsvoice.top/ads.txt"
+            "https://github.com/zhong199/tts"
+          )
+
+          for url in "${urls[@]}"; do
+            echo "Checking $url"
+            curl -fsSL --retry 3 --retry-delay 5 "$url" >/dev/null
+          done
+
+      - name: Check required text signals
+        run: |
+          set -euo pipefail
+          curl -fsSL https://ttsvoice.top/privacy | grep -q "Google Advertising Cookies"
+          curl -fsSL https://ttsvoice.top/llms.txt | grep -q "VoiceForge"
+          curl -fsSL https://ttsvoice.top/sitemap.xml | grep -q "use-cases/youtube-voiceover"
+          curl -fsSL https://raw.githubusercontent.com/zhong199/tts/main/README.md | grep -q "https://ttsvoice.top"
