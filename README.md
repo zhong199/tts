@@ -60,7 +60,13 @@ The repository also includes a daily growth health workflow that checks the webs
 
 See [TRAFFIC-GROWTH.md](TRAFFIC-GROWTH.md) for the automated growth system and the path toward 3,000 legitimate daily visits.
 
-Daily social promotion is available through `.github/workflows/daily-social-promotion.yml`. It publishes only through accounts you control when valid Mastodon or Bluesky secrets are configured. Without secrets, it safely generates a daily post artifact.
+Daily social promotion is available through `.github/workflows/daily-social-promotion.yml`. It publishes only through accounts you control when valid X/Twitter, Mastodon, or Bluesky secrets are configured. Without secrets, it safely generates a daily post artifact.
+
+Supported social posting secrets:
+
+- X/Twitter: `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`
+- Mastodon: `MASTODON_INSTANCE`, `MASTODON_ACCESS_TOKEN`
+- Bluesky: `BLUESKY_HANDLE`, `BLUESKY_APP_PASSWORD`
 
 ## Responsible Promotion
 
