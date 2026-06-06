@@ -1,0 +1,75 @@
+name: Weekly white-hat promotion
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 1 * * 1"
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify discovery endpoints
+        run: |
+          set -euo pipefail
+          for url in \
+            "https://ttsvoice.top/ads.txt" \
+            "https://ttsvoice.top/sitemap.xml" \
+            "https://ttsvoice.top/llms.txt" \
+            "https://ttsvoice.top/privacy" \
+            "https://ttsvoice.top/voiceforge-indexnow-20260606.txt"; do
+            echo "Checking $url"
+            curl -fsSL "$url" >/dev/null
+          done
+
+      - name: Submit canonical URLs to IndexNow
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import urllib.request
+
+          key = "voiceforge-indexnow-20260606"
+          slugs = [
+              "youtube-voiceover",
+              "podcast-intro",
+              "elearning-audio",
+              "japanese-tts",
+              "tts-api-workflow",
+          ]
+          urls = [
+              "https://ttsvoice.top/",
+              "https://ttsvoice.top/about",
+              "https://ttsvoice.top/privacy",
+              "https://ttsvoice.top/help",
+              "https://ttsvoice.top/terms",
+              "https://ttsvoice.top/faq-en",
+              "https://ttsvoice.top/use-cases",
+              "https://ttsvoice.top/zh/",
+              "https://ttsvoice.top/zh/about",
+              "https://ttsvoice.top/zh/privacy",
+              "https://ttsvoice.top/zh/help",
+              "https://ttsvoice.top/zh/terms",
+              "https://ttsvoice.top/zh/faq-zh",
+              "https://ttsvoice.top/zh/use-cases",
+          ]
+          for slug in slugs:
+              urls.append(f"https://ttsvoice.top/use-cases/{slug}")
+              urls.append(f"https://ttsvoice.top/zh/use-cases/{slug}")
+
+          payload = {
+              "host": "ttsvoice.top",
+              "key": key,
+              "keyLocation": f"https://ttsvoice.top/{key}.txt",
+              "urlList": urls,
+          }
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          with urllib.request.urlopen(req, timeout=30) as response:
+              print("IndexNow status:", response.status)
+              print("Submitted URLs:", len(urls))
+          PY
