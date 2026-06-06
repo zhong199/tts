@@ -1,0 +1,28 @@
+name: Daily social promotion
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 3 * * *"
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate and optionally publish social post
+        env:
+          SOCIAL_FEED_URL: https://ttsvoice.top/social-feed.json
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+          MASTODON_VISIBILITY: public
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: python scripts/social_promote.py
+
+      - name: Save selected post as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-post
+          path: social-out/*.txt

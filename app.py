@@ -198,6 +198,39 @@ for _slug, _page in USE_CASE_PAGES.items():
     INDEXABLE_ROUTES[f"/use-cases/{_slug}"] = ("en", _page["en_title"], _page["en_description"])
     INDEXABLE_ROUTES[f"/zh/use-cases/{_slug}"] = ("zh", _page["zh_title"], _page["zh_description"])
 
+SOCIAL_PROMOTION_POSTS = [
+    {
+        "text": "VoiceForge is a free online AI voice generator with 20+ neural voices, SSML controls, batch conversion, and downloadable audio. Try it: https://ttsvoice.top",
+        "url": "https://ttsvoice.top",
+        "tags": ["texttospeech", "aivoice", "creator tools"],
+    },
+    {
+        "text": "Need narration for YouTube videos without recording your own voice? VoiceForge turns scripts into natural AI voiceovers. Guide: https://ttsvoice.top/use-cases/youtube-voiceover",
+        "url": "https://ttsvoice.top/use-cases/youtube-voiceover",
+        "tags": ["youtube", "voiceover", "tts"],
+    },
+    {
+        "text": "Podcast creators can use VoiceForge to draft intros, segment bumpers, sponsor reads, and multilingual snippets. Learn more: https://ttsvoice.top/use-cases/podcast-intro",
+        "url": "https://ttsvoice.top/use-cases/podcast-intro",
+        "tags": ["podcast", "aivoice", "audio"],
+    },
+    {
+        "text": "Create course narration and lesson audio with free text to speech. VoiceForge supports batch conversion for e-learning workflows: https://ttsvoice.top/use-cases/elearning-audio",
+        "url": "https://ttsvoice.top/use-cases/elearning-audio",
+        "tags": ["elearning", "accessibility", "tts"],
+    },
+    {
+        "text": "Japanese learners and creators can generate natural Japanese text to speech online with VoiceForge. Guide: https://ttsvoice.top/use-cases/japanese-tts",
+        "url": "https://ttsvoice.top/use-cases/japanese-tts",
+        "tags": ["japanese", "languagelearning", "texttospeech"],
+    },
+    {
+        "text": "Developers prototyping voice UX can use VoiceForge to generate sample narration before integrating a production TTS API. Workflow: https://ttsvoice.top/use-cases/tts-api-workflow",
+        "url": "https://ttsvoice.top/use-cases/tts-api-workflow",
+        "tags": ["developers", "tts", "ux"],
+    },
+]
+
 
 def get_site_url() -> str:
     env_url = os.environ.get("SITE_URL", "").strip()
@@ -641,6 +674,39 @@ def llms_txt():
         "support@ttsvoice.top",
     ])
     return Response("\n".join(lines) + "\n", mimetype="text/plain")
+
+
+@app.route("/social-feed.json")
+def social_feed_json():
+    base = get_site_url()
+    items = []
+    for item in SOCIAL_PROMOTION_POSTS:
+        normalized = dict(item)
+        normalized["url"] = normalized["url"].replace("https://ttsvoice.top", base)
+        normalized["text"] = normalized["text"].replace("https://ttsvoice.top", base)
+        items.append(normalized)
+    return jsonify(
+        site="VoiceForge",
+        homepage=base,
+        updated=datetime.utcnow().strftime("%Y-%m-%d"),
+        guidance="Share only in relevant communities and through accounts you control. Do not spam, mass-post, or fake engagement.",
+        posts=items,
+    )
+
+
+@app.route("/social-posts.txt")
+def social_posts_txt():
+    base = get_site_url()
+    lines = [
+        "VoiceForge social promotion posts",
+        "Share only through accounts you control and where the post is relevant.",
+        "",
+    ]
+    for index, item in enumerate(SOCIAL_PROMOTION_POSTS, start=1):
+        lines.append(f"{index}. {item['text'].replace('https://ttsvoice.top', base)}")
+        lines.append(f"   Tags: {', '.join(item['tags'])}")
+        lines.append("")
+    return Response("\n".join(lines), mimetype="text/plain")
 
 
 # ---------- SPA 回退路由 ----------

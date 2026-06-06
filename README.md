@@ -4,6 +4,7 @@ Free online AI voice generator and text to speech web app.
 
 [![Daily growth health](https://github.com/zhong199/tts/actions/workflows/daily-growth-health.yml/badge.svg)](https://github.com/zhong199/tts/actions/workflows/daily-growth-health.yml)
 [![Weekly white-hat promotion](https://github.com/zhong199/tts/actions/workflows/weekly-promotion.yml/badge.svg)](https://github.com/zhong199/tts/actions/workflows/weekly-promotion.yml)
+[![Daily social promotion](https://github.com/zhong199/tts/actions/workflows/daily-social-promotion.yml/badge.svg)](https://github.com/zhong199/tts/actions/workflows/daily-social-promotion.yml)
 
 [Live Website](https://ttsvoice.top) · [FAQ](https://ttsvoice.top/faq-en) · [Use Cases](https://ttsvoice.top/use-cases) · [Privacy](https://ttsvoice.top/privacy)
 
@@ -58,6 +59,8 @@ This repository includes a weekly white-hat promotion workflow that verifies the
 The repository also includes a daily growth health workflow that checks the website, sitemap, llms.txt, privacy page, use-case pages, and GitHub README so broken discovery surfaces are caught quickly.
 
 See [TRAFFIC-GROWTH.md](TRAFFIC-GROWTH.md) for the automated growth system and the path toward 3,000 legitimate daily visits.
+
+Daily social promotion is available through `.github/workflows/daily-social-promotion.yml`. It publishes only through accounts you control when valid Mastodon or Bluesky secrets are configured. Without secrets, it safely generates a daily post artifact.
 
 ## Responsible Promotion
 
